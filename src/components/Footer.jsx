@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaPhone } from "react-icons/fa6";
 import Lottie from "lottie-react";
 import logo from "../assets/logo.json";
-import bg from "../assets/images/bg3.jpg";
+import bg from "../assets/images/bg2.jpg";
 
 const Footer = () => {
   return (

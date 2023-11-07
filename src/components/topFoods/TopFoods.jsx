@@ -24,7 +24,7 @@ const TopFoods = () => {
     return <p>{error.message}</p>;
   }
   return (
-    <div className="max-w-[1280px] mx-auto px-4">
+    <div className="max-w-[1280px] mx-auto px-4 my-24">
       <div>
        <Title>Top Ordered Foods</Title>
       </div>

@@ -31,7 +31,6 @@ const Register = () => {
     const userInfo = {
       name,
       email,
-      password,
       photoUrl,
     };
 
@@ -49,7 +48,10 @@ const Register = () => {
     // }
 
     createUser(email, password)
-      .then(() => {
+      .then((res) => {
+        // console.log(res.user)
+        const newUser = res.user;
+
         updateUser(name, photoUrl)
           .then()
           .catch((err) => setRegisterError(err.message));
@@ -57,6 +59,7 @@ const Register = () => {
         axios
           .post("http://localhost:5000/users", userInfo)
           .then((res) => {
+            console.log(res.data);
             Swal.fire({
               title: "Success!",
               text: "Successfully User Created!",
@@ -77,16 +80,25 @@ const Register = () => {
     googleSign()
       .then((res) => {
         const user = res.user;
-        console.log(user);
-        updateUser(user.photoURL, user.displayName)
+        const userInformation = {
+          email: user.email,
+          photoURL: user.photoURL,
+          displayName: user.displayName,
+        };
+        updateUser(user.displayName, user.photoURL)
           .then()
           .catch((err) => setRegisterError(err.message));
-        Swal.fire({
-          title: "Success!",
-          text: "Successfully User Created!",
-          icon: "success",
-          confirmButtonText: "Done",
-        });
+        axios
+          .post("http://localhost:5000/users", userInformation)
+          .then((res) => {
+            Swal.fire({
+              title: "Success!",
+              text: "Successfully User Created!",
+              icon: "success",
+              confirmButtonText: "Done",
+            });
+          })
+          .catch((err) => console.log(err.message));
         return navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {

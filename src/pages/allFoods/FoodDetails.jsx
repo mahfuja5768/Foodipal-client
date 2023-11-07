@@ -18,12 +18,12 @@ const FoodDetails = () => {
     description,
   } = foodDetails;
   return (
-    <div className="max-w-[1280px] mx-auto px-4 my-12 flex gap-5 items-center">
-      <div className="">
-        <img src={foodImage} className="h-[500px] " alt="" />
+    <div className="max-w-[1280px] mx-auto px-4 my-12 grid grid-cols-3 gap-5 items-center">
+      <div className=" col-span-2">
+        <img src={foodImage} className="h-[500px] w-full rounded-xl" alt="" />
       </div>
       <div>
-      <div className=" space-y-5 px-12 py-4 border-2 border-red ">
+      <div className="col-span-1 space-y-5 p-5 border-2 border-red rounded-xl">
         <h3 className="text-2xl font-semibold">
           Name: <span className="text-red font-bold">{foodName}</span>{" "}
         </h3>
