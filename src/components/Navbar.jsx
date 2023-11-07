@@ -1,41 +1,250 @@
-
+import { FaBars } from "react-icons/fa";
+import { Link, NavLink } from "react-router-dom";
+import { FaX } from "react-icons/fa6";
+import { useContext, useState } from "react";
+import logo from "../assets/logo.json";
+import ThemeToggler from "./ThemeToggler";
+import userProfile from "../assets/user.json";
+import { AuthContext } from "../ProviderContext/AuthProvider";
+import Lottie from "lottie-react";
 
 const Navbar = () => {
-    return (
-        <div>
-            <div className="drawer">
-  <input id="my-drawer-3" type="checkbox" className="drawer-toggle" /> 
-  <div className="drawer-content flex flex-col">
-    {/* Navbar */}
-    <div className="w-full navbar bg-base-300">
-      <div className="flex-none lg:hidden">
-        <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </label>
-      </div> 
-      <div className="flex-1 px-2 mx-2">Navbar Title</div>
-      <div className="flex-none hidden lg:block">
-        <ul className="menu menu-horizontal">
-          {/* Navbar menu content here */}
-          <li><a>Navbar Item 1</a></li>
-          <li><a>Navbar Item 2</a></li>
-        </ul>
-      </div>
-    </div>
-    {/* Page content here */}
-    Content
-  </div> 
-  <div className="drawer-side">
-    <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label> 
-    <ul className="menu p-4 w-80 min-h-full bg-base-200">
-      {/* Sidebar content here */}
-      <li><a>Sidebar Item 1</a></li>
-      <li><a>Sidebar Item 2</a></li>
-    </ul>
-  </div>
-</div>
+  const [open, setOpen] = useState(false);
+  const { user } = useContext(AuthContext);
+  return (
+    <div>
+      <nav className="shadow shadow-base">
+        <div className="max-w-[1280px] mx-auto lg:grid lg:grid-cols-4 lg:gap-2 flex items-center flex-row-reverse lg:p-4 px-4 justify-between lg:flex-row gap-6">
+          <div
+            onClick={() => setOpen(!open)}
+            className="h-6 w-6 lg:hidden block"
+          >
+            {
+              // open ? 'close icon' : 'open icon'
+              open ? (
+                <FaX className="text-2xl cursor-pointer"></FaX>
+              ) : (
+                <FaBars className="text-2xl cursor-pointer"></FaBars>
+              )
+            }
+          </div>
+          <div>
+            <Link to="/">
+            <div className=" h-16 flex items-center ">
+                <Lottie
+                  className="lg:h-full h-16"
+                  animationData={logo}
+                ></Lottie>
+                <h3 className="text-red text-3xl font-bold -ms-4">Foodie Pal</h3>
+              </div>
+            </Link>
+          </div>
+
+          <div className="text-lg justify-center hidden col-span-2 lg:flex list-none gap-5 font-bold">
+            <li>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive
+                    ? `underline decoration-red   decoration-4 underline-offset-8`
+                    : "hover:text-red"
+                }
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/allFoods"
+                className={({ isActive }) =>
+                  isActive
+                    ? " underline decoration-red decoration-4 underline-offset-8"
+                    : "hover:text-red"
+                }
+              >
+                All Foods
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/blogs"
+                className={({ isActive }) =>
+                  isActive
+                    ? " underline decoration-red decoration-4 underline-offset-8"
+                    : "hover:text-red"
+                }
+              >
+                Blogs
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/register"
+                className={({ isActive }) =>
+                  isActive
+                    ? " underline decoration-red decoration-4 underline-offset-8"
+                    : "hover:text-red"
+                }
+              >
+                Register
+              </NavLink>
+            </li>
+            <li>
+              <ThemeToggler></ThemeToggler>
+            </li>
+          </div>
+          <div className="hidden lg:flex gap-3 justify-center items-center">
+            {!user && (
+              <div className="w-12 -mt-12">
+                {" "}
+                <Lottie
+                  className=" border border-red rounded-full mt-12"
+                  animationData={userProfile}
+                ></Lottie>
+              </div>
+            )}
+            {user && (
+              <div className="flex items-center gap-2 justify-center mx-2">
+                {user?.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    className="w-10 h-10 rounded-full select-none"
+                    alt="user photo"
+                  />
+                ) : (
+                  <div className="w-12 -mt-12">
+                    {" "}
+                    <Lottie
+                      className=" border border-red rounded-full mt-12"
+                      animationData={userProfile}
+                    ></Lottie>
+                  </div>
+                )}
+
+                <h3 className=" text-sm text-center mt-1">
+                  {user?.displayName}
+                </h3>
+              </div>
+            )}
+            {user && (
+              <Link
+                to="/login"
+                // onClick={handleLogout}
+                className="btn bg-red border-none hover:bg-red text-white"
+              >
+                Log out
+              </Link>
+            )}
+            {!user && (
+              <Link
+                to="/login"
+                className="btn bg-red border-none hover:bg-red text-white"
+              >
+                Login
+              </Link>
+            )}
+          </div>
         </div>
-    );
+        <ul
+          className={`flex flex-col justify-center items-center font-bold text-lg  text-white z-10   gap-4 px-8 py-6 pb-12 bg-red w-full absolute duration-700 all ${
+            open ? "top-16" : "top-[-800px]"
+          }`}
+        >
+          <li onClick={() => setOpen(!open)}>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? `underline decoration-white  decoration-4 underline-offset-8`
+                  : ""
+              }
+            >
+              Home
+            </NavLink>
+          </li>
+          <li onClick={() => setOpen(!open)}>
+            <NavLink
+              to="/blogs"
+              className={({ isActive }) =>
+                isActive
+                  ? " underline decoration-white decoration-4 underline-offset-8"
+                  : ""
+              }
+            >
+              Blogs
+            </NavLink>
+          </li>
+          <li onClick={() => setOpen(!open)}>
+            <NavLink
+              to="/register"
+              className={({ isActive }) =>
+                isActive
+                  ? " underline decoration-white decoration-4 underline-offset-8"
+                  : ""
+              }
+            >
+              Register
+            </NavLink>
+          </li>
+          <li>
+            <span onClick={() => setOpen(!open)}>
+              <ThemeToggler></ThemeToggler>
+            </span>
+          </li>
+         <li>
+         {!user && (
+              <Lottie
+                className=" border w-12 bg-white border-white rounded-full"
+                animationData={userProfile}
+              ></Lottie>
+          )}
+         </li>
+
+          <li>
+            {user && (
+              <div className="flex flex-col items-center gap-2 justify-center mx-2">
+                {user?.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    className="lg:w-10 lg:h-10 w-16 h-16 rounded-full select-none"
+                    alt="user photo"
+                  />
+                ) : (
+                  <div className="w-12 -mt-12">
+                    {" "}
+                    <Lottie
+                      className=" border border-red rounded-full mt-12"
+                      animationData={userProfile}
+                    ></Lottie>
+                  </div>
+                )}
+                <h3 className="text-white lg:text-sm text-lg text-center">
+                  {user?.displayName}
+                </h3>
+              </div>
+            )}
+          </li>
+          <li onClick={() => setOpen(!open)}>
+            {user && (
+              <Link
+                to="/login"
+                // onClick={handleLogout}
+                className="btn bg-white border-none text-black"
+              >
+                Log out
+              </Link>
+            )}
+            {!user && (
+              <Link to="/login" className="btn bg-white border-none text-black">
+                Login
+              </Link>
+            )}
+          </li>
+       
+        </ul>
+      </nav>
+    </div>
+  );
 };
 
 export default Navbar;
