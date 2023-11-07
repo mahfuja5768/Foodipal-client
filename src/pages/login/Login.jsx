@@ -64,7 +64,7 @@ const Login = () => {
   };
 
   return (
-    <div className="py-0 lg:py-8 px-4"   style={{
+    <div className="h-screen py-0 lg:py-8 px-4"   style={{
       backgroundImage: `url(${bg})`,
       backgroundSize: "cover", 
       backgroundPosition: "center", 

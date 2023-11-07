@@ -107,7 +107,7 @@ const Register = () => {
   };
   return (
     <div
-      className="py-0 lg:py-8 px-4"
+      className="h-screen py-0 lg:py-8 px-4"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
