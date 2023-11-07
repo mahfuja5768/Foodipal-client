@@ -1,11 +1,13 @@
-import Navbar from "../components/Navbar";
+import Banner from "../components/Banner";
+import TopFoods from "../components/topFoods/TopFoods";
 
 const Home = () => {
-    return (
-        <div>
-            <Navbar></Navbar>
-        </div>
-    );
+  return (
+    <div>
+        <Banner></Banner>
+      <TopFoods></TopFoods>
+    </div>
+  );
 };
 
 export default Home;
