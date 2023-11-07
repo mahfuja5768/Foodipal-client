@@ -166,6 +166,18 @@ const Navbar = () => {
           </li>
           <li onClick={() => setOpen(!open)}>
             <NavLink
+              to="/allFoods"
+              className={({ isActive }) =>
+                isActive
+                  ? " underline decoration-white decoration-4 underline-offset-8"
+                  : ""
+              }
+            >
+              All Foods
+            </NavLink>
+          </li>
+          <li onClick={() => setOpen(!open)}>
+            <NavLink
               to="/blogs"
               className={({ isActive }) =>
                 isActive
