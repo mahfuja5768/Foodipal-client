@@ -96,28 +96,62 @@ const Navbar = () => {
             </li>
           </div>
           <div className="hidden lg:flex gap-3 justify-center items-center">
-            {!user && (
-              <div className="w-12 -mt-12">
-                {" "}
-                <Lottie
-                  className=" border border-red rounded-full mt-12"
-                  animationData={userProfile}
-                ></Lottie>
-              </div>
-            )}
             {user && (
-              <div className="flex items-center gap-2 justify-center mx-2">
+              <div className=" flex  items-center gap-2 justify-center mx-2">
                 {user?.photoURL ? (
-                  <img
-                    src={user.photoURL}
-                    className="w-10 h-10 rounded-full select-none"
-                    alt="user photo"
-                  />
+                  <details className="dropdown">
+                    <summary className="btn">
+                      <img
+                        src={user?.photoURL}
+                        className=" w-10 h-10 cursor-pointer rounded-full select-none"
+                        alt="user photo"
+                      />
+                    </summary>
+
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                      <li>
+                        <NavLink
+                          to="/myAddedFoods"
+                          className={({ isActive }) =>
+                            isActive
+                              ? " underline decoration-red decoration-4 underline-offset-8"
+                              : "hover:text-red"
+                          }
+                        >
+                          My added foods
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/addAFood"
+                          className={({ isActive }) =>
+                            isActive
+                              ? " underline decoration-red decoration-4 underline-offset-8"
+                              : "hover:text-red"
+                          }
+                        >
+                          Add a food item
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/myOrderedFood"
+                          className={({ isActive }) =>
+                            isActive
+                              ? " underline decoration-red decoration-4 underline-offset-8"
+                              : "hover:text-red"
+                          }
+                        >
+                          My ordered food
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </details>
                 ) : (
                   <div className="w-12 -mt-12">
                     {" "}
                     <Lottie
-                      className=" border border-red rounded-full mt-12"
+                      className=" border  border-red rounded-full mt-12"
                       animationData={userProfile}
                     ></Lottie>
                   </div>
@@ -205,22 +239,14 @@ const Navbar = () => {
               <ThemeToggler></ThemeToggler>
             </span>
           </li>
-          <li>
-            {!user && (
-              <Lottie
-                className=" border w-12 bg-white border-white rounded-full"
-                animationData={userProfile}
-              ></Lottie>
-            )}
-          </li>
 
           <li>
             {user && (
-              <div className="flex flex-col items-center gap-2 justify-center mx-2">
+              <div className=" flex flex-col items-center gap-2 justify-center mx-2">
                 {user?.photoURL ? (
                   <img
-                    src={user.photoURL}
-                    className="lg:w-10 lg:h-10 w-16 h-16 rounded-full select-none"
+                    src={user?.photoURL}
+                    className="lg:w-10 lg:h-10 w-16 h-16 rounded-full select-none  cursor-pointer"
                     alt="user photo"
                   />
                 ) : (
