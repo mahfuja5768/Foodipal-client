@@ -31,7 +31,7 @@ const MyAddedFoods = () => {
       <div>
         <Title>Your Added Foods</Title>
       </div>
-      <div className="grid grid-cols-1 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {data?.map((food) => (
           <MyAddedFood key={food._id} food={food}></MyAddedFood>
         ))}

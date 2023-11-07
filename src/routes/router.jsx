@@ -10,8 +10,9 @@ import OrderFood from "../pages/orderFoods/orderFood";
 import Blog from "../pages/Blog";
 import PrivateRoute from "./PrivateRoute";
 import MyAddedFoods from "../pages/myProfile/myAddedFoods/MyAddedFoods";
-import AddFoodItem from './../pages/myProfile/addFoodItem/AddFoodItem';
-import MyOrderedFoods from './../pages/myProfile/myOrderedFoods/MyOrderedFoods';
+import AddFoodItem from "./../pages/myProfile/addFoodItem/AddFoodItem";
+import MyOrderedFoods from "./../pages/myProfile/myOrderedFoods/MyOrderedFoods";
+import UpdateFood from "../pages/myProfile/updateFood/UpdateFood";
 
 const router = createBrowserRouter([
   {
@@ -33,37 +34,55 @@ const router = createBrowserRouter([
         path: "/details/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:5000/all-foods/${params.id}`),
-        element: <PrivateRoute><FoodDetails></FoodDetails></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <FoodDetails></FoodDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/orderFood/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:5000/all-foods/${params.id}`),
-        element: <PrivateRoute><OrderFood></OrderFood></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <OrderFood></OrderFood>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/blogs",
-        element: <Blog></Blog>
+        element: <Blog></Blog>,
       },
       {
         path: "/myAddedFoods",
-        element: <PrivateRoute><MyAddedFoods></MyAddedFoods></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <MyAddedFoods></MyAddedFoods>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/addAFood",
-        element: <PrivateRoute><AddFoodItem></AddFoodItem></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <AddFoodItem></AddFoodItem>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myOrderedFood",
-        element: <PrivateRoute><MyOrderedFoods></MyOrderedFoods></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <MyOrderedFoods></MyOrderedFoods>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/updateFood/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/shows/${params.id}`, {
-            credentials: "include",
-          }),
-        element: <UpdateShow></UpdateShow>,
+          fetch(`http://localhost:5000/all-foods/${params.id}`),
+        element: <UpdateFood></UpdateFood>,
       },
     ],
   },

@@ -12,7 +12,7 @@ const MyAddedFood = ({ food }) => {
           alt=""
         />
       </div>
-      <div className=" space-y-4 px-12 py-4 md:h-[320px] h-[350px] border-2 border-red">
+      <div className="px-12 py-4 border-2 border-red grid grid-cols-2 gap-3">
         <h3 className="text-2xl font-semibold">
           Name: <span className="text-red font-bold">{foodName}</span>{" "}
         </h3>
@@ -22,10 +22,10 @@ const MyAddedFood = ({ food }) => {
         <h3 className="text-2xl font-semibold ">
           Price: <span className="text-red font-bold">${price}</span>{" "}
         </h3>
-        <h3 className="text-2xl font-semibold">
+        <h3 className="text-2xl font-semibold pb-6">
           <span className="text-red font-bold">{count}</span> times Ordered.{" "}
         </h3>
-        <Link to={`/updateFood/${_id}`}>
+        <Link className="w-full" to={`/updateFood/${_id}`}>
           {" "}
           <Button>Update Now</Button>
         </Link>
