@@ -1,16 +1,16 @@
 import { FaBars } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { FaX } from "react-icons/fa6";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import logo from "../assets/logo.json";
 import ThemeToggler from "./ThemeToggler";
 import userProfile from "../assets/user.json";
-import { AuthContext } from "../ProviderContext/AuthProvider";
 import Lottie from "lottie-react";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
   return (
     <div>
       <nav className="shadow shadow-base">
@@ -30,12 +30,14 @@ const Navbar = () => {
           </div>
           <div>
             <Link to="/">
-            <div className=" h-16 flex items-center ">
+              <div className=" h-16 flex items-center ">
                 <Lottie
                   className="lg:h-full h-16"
                   animationData={logo}
                 ></Lottie>
-                <h3 className="text-red text-3xl font-bold -ms-4">Foodie Pal</h3>
+                <h3 className="text-red text-3xl font-bold -ms-4">
+                  Foodie Pal
+                </h3>
               </div>
             </Link>
           </div>
@@ -191,14 +193,14 @@ const Navbar = () => {
               <ThemeToggler></ThemeToggler>
             </span>
           </li>
-         <li>
-         {!user && (
+          <li>
+            {!user && (
               <Lottie
                 className=" border w-12 bg-white border-white rounded-full"
                 animationData={userProfile}
               ></Lottie>
-          )}
-         </li>
+            )}
+          </li>
 
           <li>
             {user && (
@@ -240,7 +242,6 @@ const Navbar = () => {
               </Link>
             )}
           </li>
-       
         </ul>
       </nav>
     </div>
