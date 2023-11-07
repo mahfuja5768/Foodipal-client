@@ -7,12 +7,15 @@ import bg from "../assets/images/bg3.jpg";
 
 const Footer = () => {
   return (
-    <div className=" border-t px-8 mt-12"  style={{
+    <div className=" border-t mt-12 bg-gradient-to-r from-black to-transparent"  style={{
       backgroundImage: `url(${bg})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
     }}>
-      <footer className="max-w-[1280px] mx-auto ">
+      <div className="bg-gradient-to-b from-black to-transparent px-4">
+
+     
+      <footer className="max-w-[1280px] mx-auto text-white ">
      
           <div className=" py-12 md:py-16 items-center  grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="">
@@ -104,6 +107,7 @@ const Footer = () => {
           </p>
         </div>
       </footer>
+      </div>
     </div>
   );
 };

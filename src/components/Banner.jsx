@@ -8,10 +8,11 @@ import Button from "../hooks/Button";
 const Banner = () => {
   return (
     <div>
-      <div className="carousel w-full h-[90vh] mb-12 text-center lg:text-start ">
+      <div className=" w-full h-[90vh] mb-12 text-center lg:text-start ">
+        <div className="relative w-full">
           <img src={bg2} className="w-full" alt="banner-png" />
           <div className="absolute flex justify-between items-center transform -translate-y-1/2 left-0 right-0 top-1/2 bg-gradient-to-b from-[#121212] h-full">
-            <div className="hero-content text-white">
+            <div className="hero-content text-white max-w-[1280px] mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-4">
                 <div className=" lg:col-span-3">
                   <h1 className="mb-4 text-3xl md:text-5xl leading-9 font-bold w-full  md:w-10/12  lg:w-full mx-auto">
@@ -35,6 +36,7 @@ const Banner = () => {
                   </Link>
                 </div>
               </div>
+            </div>
           </div>
         </div>
       </div>
