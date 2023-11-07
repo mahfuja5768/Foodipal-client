@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import TopFood from "./TopFood";
 import Title from "../../hooks/Title";
 import Button from "../../hooks/Button";
+import { Link } from "react-router-dom";
 
 const TopFoods = () => {
   const { data, isPending, isError, error } = useQuery({
@@ -23,7 +24,7 @@ const TopFoods = () => {
     return <p>{error.message}</p>;
   }
   return (
-    <div className="max-w-[1280px] mx-auto ">
+    <div className="max-w-[1280px] mx-auto px-4">
       <div>
        <Title>Top Ordered Foods</Title>
       </div>
@@ -33,7 +34,7 @@ const TopFoods = () => {
       ))}
       </div>
       <div className="flex justify-center my-12">
-      <Button>See All Food</Button>
+      <Link to='/allFoods'><Button>See All Food</Button></Link>
       </div>
     </div>
   );

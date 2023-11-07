@@ -13,7 +13,7 @@ const TopFood = ({ food }) => {
           alt=""
         />
       </div>
-      <div className=" space-y-5 px-12 py-4 h-[320px] border-2 border-red rounded-b-full bg-[#fff8f8d2]">
+      <div className=" space-y-4 px-12 py-4 md:h-[320px] h-[350px] border-2 border-red rounded-b-full">
         <h3 className="text-2xl font-semibold">
           Name: <span className="text-red font-bold">{foodName}</span>{" "}
         </h3>
@@ -27,7 +27,7 @@ const TopFood = ({ food }) => {
           <span className="text-red font-bold">{count}</span> times Ordered.{" "}
         </h3>
         <div className="w-1/2 mx-auto">
-          <Link to=''>
+          <Link to={`/details/${_id}`}>
             {" "}
             <Button>View Details</Button>
           </Link>

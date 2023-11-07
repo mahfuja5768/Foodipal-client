@@ -8,7 +8,7 @@ const AllFoods = () => {
   const [foods, setFoods] = useState([]);
   const [foodName, setFoodName] = useState();
   const [sort, setSort] = useState();
-  console.log(sort);
+  // console.log(sort);
   const foodNames = [
     "Lasagna",
     "Chicken Tikka Masala",
@@ -56,12 +56,12 @@ const AllFoods = () => {
   }, [foodName,currentPage, itemsPerPage, sort]);
 
   return (
-    <div className="max-w-[1280px] mx-auto ">
+    <div className="max-w-[1280px] mx-auto px-4">
       <div>
         <Title>All Foods</Title>
       </div>
       <div>
-        <div className="flex justify-between my-12">
+        <div className="flex lg:justify-between lg:flex-row flex-col gap-5 items-center justify-center my-12">
 
           <div className="form-control ">
             <div className="input-group">
@@ -96,9 +96,9 @@ const AllFoods = () => {
           <AllFood key={food._id} food={food}></AllFood>
         ))}
       </div>
-      <div className="flex my-12 justify-center items-center gap-4">
+      <div className="flex my-12 justify-center items-center gap-2 lg:gap-4 ">
         <button
-          className="bg-red  hover:text-red hover:bg-transparent text-white font-bold btn text-lg rounded-full"
+          className="bg-red text-sm md:text-lg hover:text-red hover:bg-transparent text-white font-bold btn  rounded-full"
           onClick={handlePrev}
         >
           Prev
@@ -107,8 +107,8 @@ const AllFoods = () => {
           <button
             className={
               currentPage === page
-                ? "bg-red text-white hover:text-red hover:bg-transparent font-bold btn text-lg rounded-full"
-                : "bg-transparent border-4  hover:text-red hover:bg-transparent border-red font-bold btn text-lg rounded-full "
+                ? "bg-red text-white hover:text-red hover:bg-transparent font-bold btn text-sm md:text-lg rounded-full"
+                : "bg-transparent border-4  hover:text-red hover:bg-transparent text-sm md:text-lg border-red font-bold btn rounded-full "
             }
             key={page}
             onClick={() => setCurrentPage(page)}
@@ -118,11 +118,11 @@ const AllFoods = () => {
         ))}
         <button
           onClick={handleNext}
-          className=" hover:text-red hover:bg-transparent bg-red text-white font-bold btn text-lg rounded-full"
+          className=" hover:text-red hover:bg-transparent bg-red text-white font-bold btn text-sm md:text-lg rounded-full"
         >
           Next
         </button>
-
+      
         <select
           value={itemsPerPage}
           onChange={handleItemsPerPage}

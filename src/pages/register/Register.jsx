@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import Lottie from "lottie-react";
 import gif from "../../assets/register.json";
 import bg from "../../assets/images/img-19.png";
+import axios from "axios";
 
 const Register = () => {
   const { createUser, updateUser, googleSign } = useAuth();
@@ -27,6 +28,12 @@ const Register = () => {
     const password = form.get("password");
 
     console.log(name, email, password, photoUrl);
+    const userInfo = {
+      name,
+      email,
+      password,
+      photoUrl,
+    };
 
     setRegisterError("");
     formValues.reset();
@@ -46,12 +53,19 @@ const Register = () => {
         updateUser(name, photoUrl)
           .then()
           .catch((err) => setRegisterError(err.message));
-        Swal.fire({
-          title: "Success!",
-          text: "Successfully User Created!",
-          icon: "success",
-          confirmButtonText: "Done",
-        });
+
+        axios
+          .post("http://localhost:5000/users", userInfo)
+          .then((res) => {
+            Swal.fire({
+              title: "Success!",
+              text: "Successfully User Created!",
+              icon: "success",
+              confirmButtonText: "Done",
+            });
+          })
+          .catch((err) => console.log(err.message));
+
         return navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {

@@ -3,15 +3,20 @@ import { Link } from "react-router-dom";
 import { FaPhone } from "react-icons/fa6";
 import Lottie from "lottie-react";
 import logo from "../assets/logo.json";
+import bg from "../assets/images/bg3.jpg";
 
 const Footer = () => {
   return (
-    <div className="bg-primary border-t px-8 mt-12">
+    <div className=" border-t px-8 mt-12"  style={{
+      backgroundImage: `url(${bg})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}>
       <footer className="max-w-[1280px] mx-auto ">
      
           <div className=" py-12 md:py-16 items-center  grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="">
-              <div className="flex flex-col gap-3 ">
+              <div className="flex flex-col gap-3 justify-center items-center lg:items-start">
              
                 <h3 className="font-bold text-2xl ms-5">Contact Us</h3>
                 <p className="flex items-center gap-2 ms-5">
@@ -35,7 +40,7 @@ const Footer = () => {
                   Foodie Pal
                 </h3>
               </div>
-              <div className="flex justify-start md:justify-center gap-12 my-12">
+              <div className="flex  justify-center  gap-12 my-12">
                 <a
                   href="https://www.facebook.com/"
                   className="hover:-translate-y-2 duration-300"
@@ -65,7 +70,7 @@ const Footer = () => {
               </div>
             </nav>
 
-            <div className="flex justify-end">
+            <div className="flex justify-center ">
               <nav className="flex flex-col ">
                 <header className="font-bold text-2xl  mb-2">Quick Menu</header>
                 <Link to="/" className="link link-hover ps-1 pb-3 font-medium">
