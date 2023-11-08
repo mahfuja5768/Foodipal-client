@@ -3,6 +3,8 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import gif from "../../assets/login-form.gif";
+
  
 const Login = () => {
   const bg ='https://i.ibb.co/PDhh91Q/img-19.png'
@@ -72,10 +74,7 @@ const Login = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-4 items-center gap-6">
           <div className="lg:col-span-2">
-          {/* <Lottie
-                  className="lg:h-full h-16"
-                  animationData={gif}
-                ></Lottie> */}
+         <img src={gif} alt="" />
           </div>
           <div className="lg:col-span-2">
           <h1 className=" lg:text-5xl text-start text-4xl font-bold  my-12">

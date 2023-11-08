@@ -3,11 +3,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AllFood from "./AllFood";
 import { useLoaderData } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const AllFoods = () => {
+  const { loading } = useAuth();
+
+  if(loading){
+   return <div className="text-center my-8">
+    <span className="loading loading-ring loading-lg text-red"></span>
+  </div>
+  }
   const [foods, setFoods] = useState([]);
   const [foodName, setFoodName] = useState();
-  const [sort, setSort] = useState();
   console.log(foodName);
   const foodNames = [
     "All",
@@ -23,6 +30,7 @@ const AllFoods = () => {
   const [itemsPerPage, setItemsPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(0);
   const { count } = useLoaderData();
+
   //   console.log(count);
   const numberOfPages = Math.ceil(count / itemsPerPage);
   const pages = [...Array(numberOfPages).keys()];
@@ -59,7 +67,7 @@ const AllFoods = () => {
       //   console.log(res.data);
       setFoods(res.data);
     });
-  }, [foodName, currentPage, itemsPerPage, sort]);
+  }, [foodName, currentPage, itemsPerPage]);
 
   return (
     <div className="max-w-[1280px] mx-auto px-4">
@@ -75,7 +83,9 @@ const AllFoods = () => {
                 className="select select-bordered text-black"
               >
                 {foodNames.map((food, idx) => (
-                  <option className="text-black" key={idx}>{food}</option>
+                  <option className="text-black" key={idx}>
+                    {food}
+                  </option>
                 ))}
               </select>
               <button className="btn">Go</button>

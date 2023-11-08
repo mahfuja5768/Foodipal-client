@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
-// import Lottie from "lottie-react";
+import gif from "../../assets/regi.gif";
 
 import axios from "axios";
 
@@ -117,7 +117,7 @@ const Register = () => {
       <div className="py-8 max-w-[1280px] mx-auto px-4 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 items-center gap-6">
           <div className="lg:col-span-2">
-            {/* <Lottie className="lg:h-[600px] h-16" animationData={gif}></Lottie> */}
+          <img src={gif} alt="" />
           </div>
           <div className="lg:col-span-2">
             <h1 className=" lg:text-5xl text-start text-4xl font-bold  my-12">

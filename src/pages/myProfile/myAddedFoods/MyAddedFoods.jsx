@@ -11,7 +11,7 @@ const MyAddedFoods = () => {
 
   const url = `http://localhost:5000/added-food?email=${user?.email}`;
   const { data, isError, error, isPending, refetch } = useQuery({
-    queryKey: ["myTickets"],
+    queryKey: ["addedFood"],
     queryFn: async () => {
       const data = await axiosSecure.get(url).then((res) => {
         console.log(res.data);
