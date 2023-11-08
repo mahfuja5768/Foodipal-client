@@ -19,7 +19,7 @@ const MyOrderedFoods = () => {
     if (isPending) {
       return (
         <div className="text-center my-8">
-          <span className="loading loading-spinner text-success"></span>
+          <span className="loading loading-ring text-success"></span>
         </div>
       );
     }

@@ -99,16 +99,15 @@ const Navbar = () => {
             {user && (
               <div className=" flex  items-center gap-2 justify-center mx-2">
                 {user?.photoURL ? (
-                  <details className="dropdown">
-                    <summary className="btn">
+                  <div className="dropdown dropdown-bottom">
+                    <label tabIndex={0} className="btn m-1">
                       <img
                         src={user?.photoURL}
                         className=" w-10 h-10 cursor-pointer rounded-full select-none"
                         alt="user photo"
                       />
-                    </summary>
-
-                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 text-black rounded-box w-52">
+                    </label>
+                    <ul tabIndex={0} className="dropdown-content text-black z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                       <li>
                         <NavLink
                           to="/myAddedFoods"
@@ -146,7 +145,7 @@ const Navbar = () => {
                         </NavLink>
                       </li>
                     </ul>
-                  </details>
+                  </div>
                 ) : (
                   <div className="w-12 -mt-12">
                     {" "}

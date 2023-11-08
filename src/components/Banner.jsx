@@ -26,12 +26,14 @@ const Banner = () => {
             customers and enhancing your ability to explore our culinary
             offerings.
           </p>
-          <Link to="/moreEvents">
+         <div className="w-1/5 my-6">
+         <Link to="/moreEvents">
             {" "}
             <Button className="btn mt-1 mb-5 normal-case bg-gray-200 btn-outline">
               <span>Explore Foods</span>
             </Button>
           </Link>
+         </div>
         </div>
       </div>
     </div>

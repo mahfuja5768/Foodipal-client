@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 const MyOrderedFood = ({ food, refetch }) => {
   const { _id, foodName, foodImage, foodCategory, price, count } = food;
+  console.log(foodCategory)
 
   const handleDelete = () => {
     // console.log();
@@ -28,25 +29,27 @@ const MyOrderedFood = ({ food, refetch }) => {
     });
   };
   return (
-    <div className=" flex gap-3">
-      <div>
-        <img
+    <div className=" flex gap-3 shadow-xl">
+       <div className="md:w-[350px] w-[200px] border-2 border-red rounded-l-3xl">
+        {
+          foodImage? <img
           src={foodImage}
-          className="w-full h-[300px] border-2 border-red "
+          className="w-full h-[300px] rounded-l-3xl"
           alt=""
-        />
+        /> : <p  className="w-full h-[300px] flex items-center justify-center">No Image</p>
+        }
       </div>
-      <div className="px-12 py-4 border-2 border-red grid grid-cols-2 gap-3">
-        <h3 className="text-2xl font-semibold">
+      <div className="px-6 py-4 border-2 border-red rounded-r-3xl">
+        <h3 className="text-2xl font-semibold my-2">
           Name: <span className="text-red font-bold">{foodName}</span>{" "}
         </h3>
-        <h3 className="text-2xl font-semibold ">
+        <h3 className="text-2xl font-semibold  my-2">
           Category: <span className="text-red font-bold">{foodCategory}</span>{" "}
         </h3>
-        <h3 className="text-2xl font-semibold ">
+        <h3 className="text-2xl font-semibold  my-2">
           Price: <span className="text-red font-bold">${price}</span>{" "}
         </h3>
-        <h3 className="text-2xl font-semibold pb-6">
+        <h3 className="text-2xl font-semibold pb-2 my-2">
           <span className="text-red font-bold">{count}</span> times Ordered.{" "}
         </h3>
         <button

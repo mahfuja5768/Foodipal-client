@@ -14,7 +14,7 @@ const AllFood = ({ food }) => {
           alt=""
         />
       </div>
-      <div className=" space-y-4 px-12 py-4 h-[300px] border-2 border-red rounded-b-full">
+      <div className="  space-y-4 px-12 py-4 h-[300px] border-2 border-red rounded-b-full">
         <h3 className="text-2xl font-semibold">
           Name: <span className="text-red font-bold">{foodName}</span>{" "}
         </h3>

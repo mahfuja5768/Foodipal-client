@@ -44,16 +44,16 @@ const AllFoods = () => {
     }
   };
 
-//   let price={}
+  //   let price={}
 
-//   const url = `http://localhost:5000/all-foods?&page=${currentPage}&size=${itemsPerPage}&sortField=${foods.price}&sortOrder=${sort}`;
+  //   const url = `http://localhost:5000/all-foods?&page=${currentPage}&size=${itemsPerPage}&sortField=${foods.price}&sortOrder=${sort}`;
   const url = `http://localhost:5000/all-foods?&page=${currentPage}&size=${itemsPerPage}`;
   useEffect(() => {
     axios.get(url).then((res) => {
       //   console.log(res.data);
       setFoods(res.data);
     });
-  }, [foodName,currentPage, itemsPerPage, sort]);
+  }, [foodName, currentPage, itemsPerPage, sort]);
 
   return (
     <div className="max-w-[1280px] mx-auto px-4">
@@ -62,7 +62,6 @@ const AllFoods = () => {
       </div>
       <div>
         <div className="flex lg:justify-between lg:flex-row flex-col gap-5 items-center justify-center my-12">
-
           <div className="form-control ">
             <div className="input-group">
               <select
@@ -122,7 +121,7 @@ const AllFoods = () => {
         >
           Next
         </button>
-      
+
         <select
           value={itemsPerPage}
           onChange={handleItemsPerPage}
