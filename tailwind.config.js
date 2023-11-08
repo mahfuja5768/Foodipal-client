@@ -10,7 +10,7 @@ export default {
         inter: "'Inter', sans-serif",
       },
     colors: {
-      red: "#e02b20",
+      red: "#b80604",
       secondary: "#b80604",
       primary: '#fff8f8d2',
       light: "#ffffff",

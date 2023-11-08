@@ -42,7 +42,7 @@ const Modal = ({ food ,refetch}) => {
       description,
     };
     axios
-      .put(`http://localhost:5000/update-food/${_id}`, updatedFoodInfo)
+      .put(`http://localhost:5000/update-food/${_id}`, updatedFoodInfo,{withCredentials:true})
       .then((res) => {
        console.log(res.data)
         Swal.fire({

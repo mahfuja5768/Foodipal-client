@@ -27,7 +27,7 @@ const Banner = () => {
             offerings.
           </p>
          <div className="w-1/5 my-6">
-         <Link to="/moreEvents">
+         <Link to="/allFoods">
             {" "}
             <Button className="btn mt-1 mb-5 normal-case bg-gray-200 btn-outline">
               <span>Explore Foods</span>

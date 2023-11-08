@@ -8,8 +8,9 @@ const AllFoods = () => {
   const [foods, setFoods] = useState([]);
   const [foodName, setFoodName] = useState();
   const [sort, setSort] = useState();
-  // console.log(sort);
+  console.log(foodName);
   const foodNames = [
+    "All",
     "Lasagna",
     "Chicken Tikka Masala",
     "Ramen",
@@ -43,11 +44,16 @@ const AllFoods = () => {
       setCurrentPage(currentPage + 1);
     }
   };
-
-  //   let price={}
-
-  //   const url = `http://localhost:5000/all-foods?&page=${currentPage}&size=${itemsPerPage}&sortField=${foods.price}&sortOrder=${sort}`;
-  const url = `http://localhost:5000/all-foods?&page=${currentPage}&size=${itemsPerPage}`;
+  let url;
+  if (foodName && foodName !== "All") {
+    url = `http://localhost:5000/all-foods?&page=${currentPage}&size=${itemsPerPage}&foodName=${foodName}`;
+  } else if (foodName === "All") {
+    // url = "http://localhost:5000/all-foods";
+    url = `http://localhost:5000/all-foods?&page=${currentPage}&size=${itemsPerPage}`;
+  } else {
+    // url = "http://localhost:5000/all-foods";
+    url = `http://localhost:5000/all-foods?&page=${currentPage}&size=${itemsPerPage}`;
+  }
   useEffect(() => {
     axios.get(url).then((res) => {
       //   console.log(res.data);
@@ -71,19 +77,6 @@ const AllFoods = () => {
                 {foodNames.map((food, idx) => (
                   <option key={idx}>{food}</option>
                 ))}
-              </select>
-              <button className="btn">Go</button>
-            </div>
-          </div>
-          <div className="form-control ">
-            <h3>Sort by price</h3>
-            <div className="input-group">
-              <select
-                onChange={(e) => setSort(e.target.value)}
-                className="select select-bordered"
-              >
-                <option value="dsc">High</option>
-                <option value="asc">Low</option>
               </select>
               <button className="btn">Go</button>
             </div>

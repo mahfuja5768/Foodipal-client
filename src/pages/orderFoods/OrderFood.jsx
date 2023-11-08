@@ -11,39 +11,72 @@ const OrderFood = () => {
   const { user } = useAuth();
   const [foodDetails] = useLoaderData();
   //   console.log(Object.keys(foodDetails).join(","));
-  //    console.log(foodDetails)
-  const { _id, foodName, foodImage, foodCategory, price, count, quantity } =
-    foodDetails;
-    const goTo = useNavigate();
+  const {
+    _id,
+    foodName,
+    foodImage,
+    foodCategory,
+    price,
+    count,
+    quantity,
+    email,
+  } = foodDetails;
+  const goTo = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const formValues = e.target;
     const form = new FormData(e.currentTarget);
     const date = form.get("date");
-    const orderFoodInfo = {
-      email: user?.email,
-      name: user?.displayName,
-      date,
-      foodName,
-      foodImage,
-      foodCategory,
-      price,
-      count,
-      quantity,
-    };
-    axios
-      .post("http://localhost:5000/order-foods", orderFoodInfo)
-      .then((res) => {
-        Swal.fire({
-          title: "Success!",
-          text: "Successfully food purchased!",
-          icon: "success",
-          confirmButtonText: "Done",
-        });
-        goTo("/allFoods");
-        formValues.reset();
-      })
-      .catch((err) => console.log(err.message));
+    if (email === user.email) {
+      Swal.fire({
+        title: "Error!",
+        text: "You can not buy your added food!",
+        icon: "error",
+        confirmButtonText: "Done",
+      });
+      return;
+    }
+    if(quantity > 0){
+      const orderFoodInfo = {
+        email: user?.email,
+        name: user?.displayName,
+  
+        date,
+        foodName,
+        foodImage,
+        foodCategory,
+        price,
+        count,
+      };
+      axios
+        .put(`http://localhost:5000/update-quantity/${_id}`)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => console.log(err.message));
+  
+      axios
+        .post("http://localhost:5000/order-foods", orderFoodInfo)
+        .then((res) => {
+          Swal.fire({
+            title: "Success!",
+            text: "Successfully food purchased!",
+            icon: "success",
+            confirmButtonText: "Done",
+          });
+          goTo("/allFoods");
+          formValues.reset();
+        })
+        .catch((err) => console.log(err.message));
+    }else{
+      return  Swal.fire({
+        title: "error!",
+        text: "Food is not available!",
+        icon: "error",
+        confirmButtonText: "Done",
+      });
+    }
+   
   };
 
   return (

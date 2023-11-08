@@ -31,7 +31,6 @@ const MyAddedFood = ({ food, refetch }) => {
           <h3 className="text-2xl font-semibold pb-3 my-2">
             <span className="text-red font-bold">{count}</span> times Ordered.{" "}
           </h3>
-          {/* <Link className="w-full" to={`/updateFood/${_id}`} > */}
           <Link
             className="w-full"
             onClick={() => document.getElementById("my_modal_5").showModal()}

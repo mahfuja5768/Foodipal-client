@@ -7,10 +7,71 @@ import ThemeToggler from "./ThemeToggler";
 import userProfile from "../assets/user.json";
 import Lottie from "lottie-react";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
+
+  const coreNav = (
+    <>
+      <ul
+        tabIndex={0}
+        className="dropdown-content text-black z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+      >
+        <li>
+          <NavLink
+            to="/myAddedFoods"
+            className={({ isActive }) =>
+              isActive
+                ? " underline decoration-red decoration-4 underline-offset-8"
+                : "hover:text-red"
+            }
+          >
+            My added foods
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/addAFood"
+            className={({ isActive }) =>
+              isActive
+                ? " underline decoration-red decoration-4 underline-offset-8"
+                : "hover:text-red"
+            }
+          >
+            Add a food item
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/myOrderedFood"
+            className={({ isActive }) =>
+              isActive
+                ? " underline decoration-red decoration-4 underline-offset-8"
+                : "hover:text-red"
+            }
+          >
+            My ordered food
+          </NavLink>
+        </li>
+      </ul>
+    </>
+  );
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          title: "Success!",
+          text: "Successfully User Logged out",
+          icon: "success",
+          confirmButtonText: "Done",
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <nav className="shadow shadow-base">
@@ -100,59 +161,32 @@ const Navbar = () => {
               <div className=" flex  items-center gap-2 justify-center mx-2">
                 {user?.photoURL ? (
                   <div className="dropdown dropdown-bottom">
-                    <label tabIndex={0} className="btn m-1">
+                    <label
+                      tabIndex={0}
+                      className="w-full btn m-1 bg-transparent hover:bg-transparent border-none"
+                    >
                       <img
                         src={user?.photoURL}
                         className=" w-10 h-10 cursor-pointer rounded-full select-none"
                         alt="user photo"
                       />
                     </label>
-                    <ul tabIndex={0} className="dropdown-content text-black z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                      <li>
-                        <NavLink
-                          to="/myAddedFoods"
-                          className={({ isActive }) =>
-                            isActive
-                              ? " underline decoration-red decoration-4 underline-offset-8"
-                              : "hover:text-red"
-                          }
-                        >
-                          My added foods
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          to="/addAFood"
-                          className={({ isActive }) =>
-                            isActive
-                              ? " underline decoration-red decoration-4 underline-offset-8"
-                              : "hover:text-red"
-                          }
-                        >
-                          Add a food item
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          to="/myOrderedFood"
-                          className={({ isActive }) =>
-                            isActive
-                              ? " underline decoration-red decoration-4 underline-offset-8"
-                              : "hover:text-red"
-                          }
-                        >
-                          My ordered food
-                        </NavLink>
-                      </li>
-                    </ul>
+                    {coreNav}
                   </div>
                 ) : (
-                  <div className="w-12 -mt-12">
-                    {" "}
-                    <Lottie
-                      className=" border  border-red rounded-full mt-12"
-                      animationData={userProfile}
-                    ></Lottie>
+                  <div className="dropdown dropdown-bottom">
+                    <label
+                      tabIndex={0}
+                      className="btn m-1 bg-transparent hover:bg-transparent border-none"
+                    >
+                      <div className="w-12 -mt-12">
+                        <Lottie
+                          className=" border  border-red rounded-full mt-12"
+                          animationData={userProfile}
+                        ></Lottie>
+                      </div>
+                    </label>
+                    {coreNav}
                   </div>
                 )}
 
@@ -164,7 +198,7 @@ const Navbar = () => {
             {user && (
               <Link
                 to="/login"
-                // onClick={handleLogout}
+                onClick={handleLogout}
                 className="btn bg-red border-none hover:bg-red text-white"
               >
                 Log out
@@ -181,7 +215,7 @@ const Navbar = () => {
           </div>
         </div>
         <ul
-          className={`flex flex-col justify-center items-center font-bold text-lg  text-white z-10   gap-4 px-8 py-6 pb-12 bg-red w-full absolute duration-700 all ${
+          className={`flex flex-col justify-center items-start font-bold text-lg  text-white z-10   gap-4 px-8 py-6 pb-12 bg-red w-full absolute duration-700 all ${
             open ? "top-16" : "top-[-800px]"
           }`}
         >
@@ -241,25 +275,45 @@ const Navbar = () => {
 
           <li>
             {user && (
-              <div className=" flex flex-col items-center gap-2 justify-center mx-2">
-                {user?.photoURL ? (
-                  <img
-                    src={user?.photoURL}
-                    className="lg:w-10 lg:h-10 w-16 h-16 rounded-full select-none  cursor-pointer"
-                    alt="user photo"
-                  />
-                ) : (
-                  <div className="w-12 -mt-12">
-                    {" "}
-                    <Lottie
-                      className=" border border-red rounded-full mt-12"
-                      animationData={userProfile}
-                    ></Lottie>
+              <div className=" flex flex-col items-start gap-2 justify-start mx-2">
+                {user && (
+                  <div className=" flex  items-start flex-col gap-2 justify-start ">
+                    {user?.photoURL ? (
+                      <div className="dropdown dropdown-left">
+                        <label
+                          tabIndex={0}
+                          className="w-full btn m-1 bg-transparent hover:bg-transparent border-none"
+                        >
+                          <img
+                            src={user?.photoURL}
+                            className=" w-10 h-10 cursor-pointer rounded-full select-none"
+                            alt="user photo"
+                          />
+                        </label>
+                        {coreNav}
+                      </div>
+                    ) : (
+                      <div className="dropdown dropdown-bottom">
+                        <label
+                          tabIndex={0}
+                          className="btn m-1 bg-transparent hover:bg-transparent border-none"
+                        >
+                          <div className="w-12 -mt-12">
+                            <Lottie
+                              className=" border  bg-white rounded-full mt-12"
+                              animationData={userProfile}
+                            ></Lottie>
+                          </div>
+                        </label>
+                        {coreNav}
+                      </div>
+                    )}
+
+                    <h3 className=" text-sm text-center mt-1">
+                      {user?.displayName}
+                    </h3>
                   </div>
                 )}
-                <h3 className="text-white lg:text-sm text-lg text-center">
-                  {user?.displayName}
-                </h3>
               </div>
             )}
           </li>
@@ -267,7 +321,7 @@ const Navbar = () => {
             {user && (
               <Link
                 to="/login"
-                // onClick={handleLogout}
+                onClick={handleLogout}
                 className="btn bg-white border-none text-black"
               >
                 Log out
