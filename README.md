@@ -7,7 +7,7 @@
 
 ### ~ Firstly in the Home page there was a  navbar ,banner , top foods, and a footer section. 
 
-### ~ Navbar have some navs like all home, foods, blog, register, user photo and name and a toggle logout and login button. By them user can navigate another page. 
+### ~ Navbar have some navs like all home, foods, blog, register, user photo and name and a toggle logout and login button. By them user can navigate another page. Here, I use Framer motion and loading state on it.
 
 ### ~ If the user is logged in , he/she can add new food , can purchase food, can delete food, can update food by clicking on navbar User photo .
 
