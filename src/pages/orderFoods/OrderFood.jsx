@@ -1,13 +1,12 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Title from "../../hooks/Title";
-import bg from "../../assets/images/img-19.png";
-import gif from "../../assets/order.json";
-import Lottie from "lottie-react";
+import bg1 from '../../assets/add.png'
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 const OrderFood = () => {
+  const bg = "https://i.ibb.co/PDhh91Q/img-19.png";
   const { user } = useAuth();
   const [foodDetails] = useLoaderData();
   //   console.log(Object.keys(foodDetails).join(","));
@@ -36,11 +35,11 @@ const OrderFood = () => {
       });
       return;
     }
-    if(quantity > 0){
+    if (quantity > 0) {
       const orderFoodInfo = {
         email: user?.email,
         name: user?.displayName,
-  
+
         date,
         foodName,
         foodImage,
@@ -54,7 +53,7 @@ const OrderFood = () => {
           console.log(res.data);
         })
         .catch((err) => console.log(err.message));
-  
+
       axios
         .post("http://localhost:5000/order-foods", orderFoodInfo)
         .then((res) => {
@@ -68,26 +67,25 @@ const OrderFood = () => {
           formValues.reset();
         })
         .catch((err) => console.log(err.message));
-    }else{
-      return  Swal.fire({
+    } else {
+      return Swal.fire({
         title: "error!",
         text: "Food is not available!",
         icon: "error",
         confirmButtonText: "Done",
       });
     }
-   
   };
 
   return (
     <div className="py-8 max-w-[1280px] mx-auto px-5 lg:px-12">
       <Title>
         {" "}
-        Welcome To <span className="text-red">Order</span> Page,
+        Welcome To Order Page,
       </Title>
       <div className="grid grid-cols-1 lg:grid-cols-4 items-center gap-6">
         <div className="lg:col-span-2">
-          <Lottie className="lg:h-[600px]" animationData={gif}></Lottie>
+        <img src={bg1} className="w-1/2" alt="" />
         </div>
         <div className="lg:col-span-2">
           <form onSubmit={handleSubmit} className=" space-y-5">

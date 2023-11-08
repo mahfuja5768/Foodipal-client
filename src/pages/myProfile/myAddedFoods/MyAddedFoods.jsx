@@ -2,38 +2,22 @@ import { useQuery } from "@tanstack/react-query";
 import Title from "../../../hooks/Title";
 import MyAddedFood from "./MyAddedFood";
 import useAuth from "../../../hooks/useAuth";
-import bg from "../../../assets/images/img-19.png";
-import { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { AuthContext } from "../../../ProviderContext/AuthProvider";
 
-const MyAddedFoods = async () => {
-  // const { user } = useAuth();
-  const { user } = useContext(AuthContext);
-  console.log(user.email)
-  // const [data, setData]= useState()
+const MyAddedFoods = () => {
+  const bg = "https://i.ibb.co/PDhh91Q/img-19.png";
+  const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   const url = `http://localhost:5000/added-food?email=${user?.email}`;
-  const { data, isPending, isError, error, refetch } = useQuery({
-    queryKey: ["addedFoods"],
+  const { data, isError, error, isPending, refetch } = useQuery({
+    queryKey: ["myTickets"],
     queryFn: async () => {
-      const data = await axios
-        .get(url, { withCredentials: true })
-        .then((res) => {
-          console.log(res.data);
-          return res.data;
-        });
-
-      // const data = await axiosSecure
-      //   .get(url)
-      //   .then((res) => {
-      //     console.log(res.data);
-      //     return res.data;
-      //   })
-      //   .catch((err) => console.log(err.message));
-      // return data;
+      const data = await axiosSecure.get(url).then((res) => {
+        console.log(res.data);
+        return res.data;
+      });
+      return data;
     },
   });
   if (isPending) {

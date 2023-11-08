@@ -5,14 +5,18 @@ import useAuth from "../../../hooks/useAuth";
 
 
 const MyOrderedFoods = () => {
+  
     const { user } = useAuth();
     const { data, isPending, isError, error ,refetch} = useQuery({
       queryKey: ["orderedFoods"],
-      queryFn: async () => {
+      queryFn:  async() => {
         const url = `http://localhost:5000/order-foods?email=${user?.email}`;
-  
+       
+        // const data = await fetch(url, {
+        //   credentials: "include",
+        // });
         const data = await fetch(url);
-        return await data.json();
+        return  data.json();
       },
     });
   

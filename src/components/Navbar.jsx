@@ -2,10 +2,8 @@ import { FaBars } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { FaX } from "react-icons/fa6";
 import { useState } from "react";
-import logo from "../assets/logo.json";
 import ThemeToggler from "./ThemeToggler";
-import userProfile from "../assets/user.json";
-import Lottie from "lottie-react";
+import userProfile from "../assets/user.png";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 
@@ -92,10 +90,6 @@ const Navbar = () => {
           <div>
             <Link to="/">
               <div className=" h-16 flex items-center ">
-                <Lottie
-                  className="lg:h-full h-16"
-                  animationData={logo}
-                ></Lottie>
                 <h3 className="text-red text-3xl font-bold -ms-4">
                   Foodie Pal
                 </h3>
@@ -179,12 +173,11 @@ const Navbar = () => {
                       tabIndex={0}
                       className="btn m-1 bg-transparent hover:bg-transparent border-none"
                     >
-                      <div className="w-12 -mt-12">
-                        <Lottie
-                          className=" border  border-red rounded-full mt-12"
-                          animationData={userProfile}
-                        ></Lottie>
-                      </div>
+                       <img
+                        src={userProfile}
+                        className=" w-10 h-10 cursor-pointer rounded-full select-none"
+                        alt="user photo"
+                      />
                     </label>
                     {coreNav}
                   </div>
@@ -298,12 +291,11 @@ const Navbar = () => {
                           tabIndex={0}
                           className="btn m-1 bg-transparent hover:bg-transparent border-none"
                         >
-                          <div className="w-12 -mt-12">
-                            <Lottie
-                              className=" border  bg-white rounded-full mt-12"
-                              animationData={userProfile}
-                            ></Lottie>
-                          </div>
+                          <img
+                        src={userProfile}
+                        className=" w-10 h-10 cursor-pointer rounded-full select-none"
+                        alt="user photo"
+                      />
                         </label>
                         {coreNav}
                       </div>

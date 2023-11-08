@@ -3,7 +3,7 @@ import Title from "../../../hooks/Title";
 import Swal from "sweetalert2";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
-import gif from "../../../assets/order.json";
+import bg from "../../../assets/add.png";
 
 const AddFoodItem = () => {
   const { user } = useAuth();
@@ -34,7 +34,7 @@ const AddFoodItem = () => {
       description,
     };
     axios
-      .post("http://localhost:5000/add-food", addedNewFoodInfo)
+      .post("http://localhost:5000/add-food", addedNewFoodInfo, {withCredentials:true})
       .then((res) => {
         Swal.fire({
           title: "Success!",
@@ -55,7 +55,7 @@ const AddFoodItem = () => {
       </Title>
       <div className="grid grid-cols-1 lg:grid-cols-4 items-center gap-6">
         <div className="lg:col-span-2">
-          <Lottie className="lg:h-[600px]" animationData={gif}></Lottie>
+         <img src={bg} className="w-1/2" alt="" />
         </div>
         <div className="lg:col-span-2">
           <form onSubmit={handleSubmit} className="  ">

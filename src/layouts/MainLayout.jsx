@@ -8,10 +8,10 @@ const MainLayout = () => {
 
   useEffect(()=>{
       if(location.pathname === '/'){
-          document.title = `Explore-Tech-Events/home`
+          document.title = `Foodie-Pal/home`
       }
       else{
-          document.title = `Explore-Tech-Events ${location.pathname}`
+          document.title = `Foodie-Pal ${location.pathname}`
 
       }
       if(location.state){

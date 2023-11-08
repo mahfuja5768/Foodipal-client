@@ -1,7 +1,3 @@
-import q1 from "../assets/images/q1.png";
-import q2 from "../assets/images/q2.png";
-import q3 from "../assets/images/q3.webp";
-
 const Blog = () => {
   return (
     <div className="my-12 max-w-[1280px] mx-auto">
@@ -28,7 +24,11 @@ const Blog = () => {
             </div>
             <div className="card flex-shrink-0 w-full">
               <form className="card-body">
-                <img src={q1} className="w-1/2 mx-auto" alt="" />
+                <img
+                  src={"https://i.ibb.co/j4ZS5nq/q1.png"}
+                  className="w-1/2 mx-auto"
+                  alt=""
+                />
               </form>
             </div>
           </div>
@@ -54,7 +54,11 @@ const Blog = () => {
             </div>
             <div className="card flex-shrink-0 w-full">
               <form className="card-body">
-                <img src={q2} className="w-1/2 mx-auto" alt="" />
+                <img
+                  src={"https://i.ibb.co/ZJTs4bz/q2.png"}
+                  className="w-1/2 mx-auto"
+                  alt=""
+                />
               </form>
             </div>
           </div>
@@ -70,53 +74,54 @@ const Blog = () => {
             </div>
             <div className="card flex-shrink-0 w-full">
               <ol className=" space-y-3 ">
-              <div className="card flex-shrink-0 w-full">
-              <form className="card-body">
-                <img src={q3} className="w-1/2 mx-auto" alt="" />
-              </form>
-            </div>
+                <div className="card flex-shrink-0 w-full">
+                  <form className="card-body">
+                    <img
+                      src={"https://i.ibb.co/hYzJVk1/q3.webp"}
+                      className="w-1/2 mx-auto"
+                      alt=""
+                    />
+                  </form>
+                </div>
                 <li className="font-bold">1.Data Model:</li>
                 <p>
-                  ->MongoDB is a NoSQL database, specifically a
+                  * MongoDB is a NoSQL database, specifically a
                   document-oriented database. It stores data in flexible,
                   semi-structured documents (usually in BSON format) organized
                   into collections.
-                  <br />
-                  ->MySQL is a relational database management system (RDBMS)
-                  that stores data in structured tables with rows and columns,
-                  following a predefined schema.
+                  <br />* MySQL is a relational database management system
+                  (RDBMS) that stores data in structured tables with rows and
+                  columns, following a predefined schema.
                 </p>
                 <li className="font-bold">2.Schema:</li>
                 <p>
-                  ->MongoDB is schema-less, which means you can insert documents
+                  * MongoDB is schema-less, which means you can insert documents
                   with different structures into the same collection. Fields can
                   be added or removed without strict adherence to a predefined
                   schema.
-                  <br />
-                  ->MySQL is schema-based, where you define the structure of
-                  tables, including column data types, constraints, and
+                  <br />* MySQL is schema-based, where you define the structure
+                  of tables, including column data types, constraints, and
                   relationships in advance. Data must adhere to this schema.
                 </p>
                 <li className="font-bold">3.Query Language:</li>
                 <p>
-                  ->MongoDB uses a JSON-like query language for querying
+                  * MongoDB uses a JSON-like query language for querying
                   documents. It supports rich queries, including geospatial
                   queries and text search.
-                  <br />
-                  ->MySQL uses SQL (Structured Query Language) for querying and
-                  managing relational data. SQL is a powerful and
+                  <br />* MySQL uses SQL (Structured Query Language) for
+                  querying and managing relational data. SQL is a powerful and
                   well-established language for data manipulation.
                 </p>
 
                 <li className="font-bold">4.Use Cases:</li>
                 <p>
-                  ->MongoDB is often used in scenarios where flexibility in data
+                  * MongoDB is often used in scenarios where flexibility in data
                   structure is required, such as content management systems,
                   real-time analytics, and applications with rapidly changing
-                  requirements. <br /> ->MySQL is commonly used for applications that
-                  require a structured, well-defined schema, such as e-commerce
-                  systems, financial applications, and traditional relational
-                  database use cases.
+                  requirements. <br />* MySQL is commonly used for applications
+                  that require a structured, well-defined schema, such as
+                  e-commerce systems, financial applications, and traditional
+                  relational database use cases.
                 </p>
               </ol>
             </div>

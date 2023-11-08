@@ -39,7 +39,6 @@ const MyAddedFood = ({ food, refetch }) => {
           </Link>
         </div>
       </div>
-      {/* Open the modal using document.getElementById('ID').showModal() method */}
       <Modal food={food} refetch={refetch}></Modal>
     </div>
   );

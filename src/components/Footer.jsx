@@ -1,11 +1,10 @@
 import { FaFacebookF, FaLinkedin, FaMailBulk, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaPhone } from "react-icons/fa6";
-import Lottie from "lottie-react";
-import logo from "../assets/logo.json";
-import bg from "../assets/images/bg2.jpg";
+// import Lottie from "lottie-react";
 
 const Footer = () => {
+  const bg ='https://i.ibb.co/6Hc7MSX/bg2.jpg'
   return (
     <div className=" border-t mt-12 bg-gradient-to-r from-black to-transparent"  style={{
       backgroundImage: `url(${bg})`,
@@ -35,10 +34,10 @@ const Footer = () => {
 
             <nav className="">
               <div className=" h-24 flex items-center flex-col">
-                <Lottie
+                {/* <Lottie
                   className="lg:h-full h-24"
                   animationData={logo}
-                ></Lottie>
+                ></Lottie> */}
                 <h3 className="text-red text-4xl font-bold -mt-6">
                   Foodie Pal
                 </h3>

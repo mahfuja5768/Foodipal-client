@@ -67,15 +67,15 @@ const AllFoods = () => {
         <Title>All Foods</Title>
       </div>
       <div>
-        <div className="flex lg:justify-between lg:flex-row flex-col gap-5 items-center justify-center my-12">
+        <div className="flex  lg:flex-row flex-col gap-5 items-center justify-center my-12">
           <div className="form-control ">
             <div className="input-group">
               <select
                 onChange={(e) => setFoodName(e.target.value)}
-                className="select select-bordered"
+                className="select select-bordered text-black"
               >
                 {foodNames.map((food, idx) => (
-                  <option key={idx}>{food}</option>
+                  <option className="text-black" key={idx}>{food}</option>
                 ))}
               </select>
               <button className="btn">Go</button>

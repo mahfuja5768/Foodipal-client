@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import gif from "../assets//error.json";
+// import gif from "../assets//error.json";
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
@@ -14,7 +14,7 @@ const ErrorPage = () => {
           </h3>
         </Link>
       </div>
-      <Lottie className="w-1/3 mt-12" animationData={gif}></Lottie>
+      {/* <Lottie className="w-1/3 mt-12" animationData={gif}></Lottie> */}
     </div>
   );
 };

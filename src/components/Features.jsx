@@ -1,7 +1,7 @@
 import Title from "../hooks/Title";
-import bg from "../assets/images/img-19.png";
 
 const Features = () => {
+  const bg ='https://i.ibb.co/PDhh91Q/img-19.png'
   return (
     <div
       className=" my-24  "
