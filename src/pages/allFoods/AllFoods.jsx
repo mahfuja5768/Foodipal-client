@@ -8,10 +8,12 @@ import useAuth from "../../hooks/useAuth";
 const AllFoods = () => {
   const { loading } = useAuth();
 
-  if(loading){
-   return <div className="text-center my-8">
-    <span className="loading loading-ring loading-lg text-red"></span>
-  </div>
+  if (loading) {
+    return (
+      <div className="text-center my-8">
+        <span className="loading loading-ring loading-lg text-red"></span>
+      </div>
+    );
   }
   const [foods, setFoods] = useState([]);
   const [foodName, setFoodName] = useState();
@@ -33,7 +35,12 @@ const AllFoods = () => {
 
   //   console.log(count);
   const numberOfPages = Math.ceil(count / itemsPerPage);
-  const pages = [...Array(numberOfPages).keys()];
+  // const pages = [...Array(numberOfPages).keys()];
+
+  const pages = [];
+  for (let i = 0; i < numberOfPages; i++) {
+    pages.push(i);
+  }
 
   const handleItemsPerPage = (e) => {
     // console.log(e.target.value);
@@ -54,13 +61,13 @@ const AllFoods = () => {
   };
   let url;
   if (foodName && foodName !== "All") {
-    url = `http://localhost:5000/all-foods?&page=${currentPage}&size=${itemsPerPage}&foodName=${foodName}`;
+    url = `https://foodie-pal-server.vercel.app/all-foods?&page=${currentPage}&size=${itemsPerPage}&foodName=${foodName}`;
   } else if (foodName === "All") {
-    // url = "http://localhost:5000/all-foods";
-    url = `http://localhost:5000/all-foods?&page=${currentPage}&size=${itemsPerPage}`;
+    // url = "https://foodie-pal-server.vercel.app/all-foods";
+    url = `https://foodie-pal-server.vercel.app/all-foods?&page=${currentPage}&size=${itemsPerPage}`;
   } else {
-    // url = "http://localhost:5000/all-foods";
-    url = `http://localhost:5000/all-foods?&page=${currentPage}&size=${itemsPerPage}`;
+    // url = "https://foodie-pal-server.vercel.app/all-foods";
+    url = `https://foodie-pal-server.vercel.app/all-foods?&page=${currentPage}&size=${itemsPerPage}`;
   }
   useEffect(() => {
     axios.get(url).then((res) => {

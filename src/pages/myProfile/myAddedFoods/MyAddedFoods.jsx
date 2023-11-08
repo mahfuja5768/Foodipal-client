@@ -3,17 +3,18 @@ import Title from "../../../hooks/Title";
 import MyAddedFood from "./MyAddedFood";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import axios from "axios";
 
 const MyAddedFoods = () => {
   const bg = "https://i.ibb.co/PDhh91Q/img-19.png";
   const { user } = useAuth();
-  const axiosSecure = useAxiosSecure();
+  // const axiosSecure = useAxiosSecure();
 
-  const url = `http://localhost:5000/added-food?email=${user?.email}`;
+  const url = `https://foodie-pal-server.vercel.app/added-food?email=${user?.email}`;
   const { data, isError, error, isPending, refetch } = useQuery({
     queryKey: ["addedFood"],
     queryFn: async () => {
-      const data = await axiosSecure.get(url).then((res) => {
+      const data = await axios.get(url).then((res) => {
         console.log(res.data);
         return res.data;
       });

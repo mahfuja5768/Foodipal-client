@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import Button from "../hooks/Button";
 
-const Modal = ({ food ,refetch}) => {
+const Modal = ({ food, refetch }) => {
   const {
     _id,
     foodName,
@@ -42,17 +42,21 @@ const Modal = ({ food ,refetch}) => {
       description,
     };
     axios
-      .put(`http://localhost:5000/update-food/${_id}`, updatedFoodInfo,{withCredentials:true})
+      .put(
+        `https://foodie-pal-server.vercel.app/update-food/${_id}`,
+        updatedFoodInfo,
+        { withCredentials: true }
+      )
       .then((res) => {
-       console.log(res.data)
+        console.log(res.data);
         Swal.fire({
           title: "Success!",
           text: "Successfully food updated!",
           icon: "success",
           confirmButtonText: "Done",
         });
-        document.getElementById("my_modal_5").close()
-     
+        document.getElementById("my_modal_5").close();
+
         formValues.reset();
         refetch();
       })

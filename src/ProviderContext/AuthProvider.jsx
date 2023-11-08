@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedUser, {
+          .post("https://foodie-pal-server.vercel.app/jwt", loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
@@ -67,7 +67,7 @@ const AuthProvider = ({ children }) => {
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", loggedEmail, {
+          .post("https://foodie-pal-server.vercel.app/logout", loggedEmail, {
             withCredentials: true,
           })
           .then((res) => {

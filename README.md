@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Website Name : Foodie Pal</h1>
-  <!-- <h2>Live link : https://vogue-verse-apparel-client.vercel.app/</h2> -->
+  <h2>Live link : https://foodie-pal-client.vercel.app/</h2>
 </div>
 
 ## # The features and functionalities  of my website are giving below :

@@ -57,7 +57,7 @@ const Register = () => {
           .catch((err) => setRegisterError(err.message));
 
         axios
-          .post("http://localhost:5000/users", userInfo)
+          .post("https://foodie-pal-server.vercel.app/users", userInfo)
           .then((res) => {
             console.log(res.data);
             Swal.fire({
@@ -89,7 +89,7 @@ const Register = () => {
           .then()
           .catch((err) => setRegisterError(err.message));
         axios
-          .post("http://localhost:5000/users", userInformation)
+          .post("https://foodie-pal-server.vercel.app/users", userInformation)
           .then((res) => {
             Swal.fire({
               title: "Success!",
@@ -117,7 +117,7 @@ const Register = () => {
       <div className="py-8 max-w-[1280px] mx-auto px-4 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 items-center gap-6">
           <div className="lg:col-span-2">
-          <img src={gif} alt="" />
+            <img src={gif} alt="" />
           </div>
           <div className="lg:col-span-2">
             <h1 className=" lg:text-5xl text-start text-4xl font-bold  my-12">

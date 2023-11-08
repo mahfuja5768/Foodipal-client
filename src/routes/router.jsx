@@ -6,12 +6,12 @@ import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import AllFoods from "../pages/allFoods/AllFoods";
 import FoodDetails from "../pages/allFoods/FoodDetails";
-import OrderFood from "../pages/orderFoods/orderFood";
 import Blog from "../pages/Blog";
 import PrivateRoute from "./PrivateRoute";
 import MyAddedFoods from "../pages/myProfile/myAddedFoods/MyAddedFoods";
 import AddFoodItem from "./../pages/myProfile/addFoodItem/AddFoodItem";
 import MyOrderedFoods from "./../pages/myProfile/myOrderedFoods/MyOrderedFoods";
+import OrderFood from './../pages/orderFoods/OrderFood';
 
 const router = createBrowserRouter([
   {
@@ -26,13 +26,13 @@ const router = createBrowserRouter([
 
       {
         path: "/allFoods",
-        loader: () => fetch("http://localhost:5000/foodsCount"),
+        loader: () => fetch("https://foodie-pal-server.vercel.app/foodsCount"),
         element: <AllFoods></AllFoods>,
       },
       {
         path: "/details/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/all-foods/${params.id}`, {
+          fetch(`https://foodie-pal-server.vercel.app/all-foods/${params.id}`, {
             credentials: "include",
           }),
         element: (
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: "/orderFood/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/all-foods/${params.id}`, {
+          fetch(`https://foodie-pal-server.vercel.app/all-foods/${params.id}`, {
             credentials: "include",
           }),
         element: (

@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 const MyOrderedFood = ({ food, refetch }) => {
   const { _id, foodName, foodImage, foodCategory, price, count } = food;
-  console.log(foodCategory)
+  console.log(foodCategory);
 
   const handleDelete = () => {
     // console.log();
@@ -19,7 +19,7 @@ const MyOrderedFood = ({ food, refetch }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/order-foods/${_id}`)
+          .delete(`https://foodie-pal-server.vercel.app/order-foods/${_id}`)
           .then(() => {
             Swal.fire("Deleted!", "Food has been deleted.", "success");
             refetch();
@@ -30,14 +30,18 @@ const MyOrderedFood = ({ food, refetch }) => {
   };
   return (
     <div className=" flex gap-3 shadow-xl">
-       <div className="md:w-[350px] w-[200px] border-2 border-red rounded-l-3xl">
-        {
-          foodImage? <img
-          src={foodImage}
-          className="w-full h-[300px] rounded-l-3xl"
-          alt=""
-        /> : <p  className="w-full h-[300px] flex items-center justify-center">No Image</p>
-        }
+      <div className="md:w-[350px] w-[200px] border-2 border-red rounded-l-3xl">
+        {foodImage ? (
+          <img
+            src={foodImage}
+            className="w-full h-[300px] rounded-l-3xl"
+            alt=""
+          />
+        ) : (
+          <p className="w-full h-[300px] flex items-center justify-center">
+            No Image
+          </p>
+        )}
       </div>
       <div className="px-6 py-4 border-2 border-red rounded-r-3xl">
         <h3 className="text-2xl font-semibold my-2">

@@ -8,7 +8,9 @@ const TopFoods = () => {
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["topFoods"],
     queryFn: async () => {
-      const data = await fetch("http://localhost:5000/top-foods");
+      const data = await fetch(
+        "https://foodie-pal-server.vercel.app/top-foods"
+      );
       return await data.json();
     },
   });
@@ -26,15 +28,17 @@ const TopFoods = () => {
   return (
     <div className="max-w-[1280px] mx-auto px-4 my-24">
       <div>
-       <Title>Top Ordered Foods</Title>
+        <Title>Top Ordered Foods</Title>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-      {data?.map((food) => (
-        <TopFood key={food._id} food={food}></TopFood>
-      ))}
+        {data?.map((food) => (
+          <TopFood key={food._id} food={food}></TopFood>
+        ))}
       </div>
       <div className="flex justify-center my-12">
-      <Link to='/allFoods'><Button>See All Food</Button></Link>
+        <Link to="/allFoods">
+          <Button>See All Food</Button>
+        </Link>
       </div>
     </div>
   );

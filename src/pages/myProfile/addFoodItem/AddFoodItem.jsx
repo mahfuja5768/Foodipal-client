@@ -24,7 +24,7 @@ const AddFoodItem = () => {
       email: user?.email,
       name: user?.displayName,
       date,
-      count:0,
+      count: 0,
       foodName,
       foodImage,
       foodCategory,
@@ -34,7 +34,9 @@ const AddFoodItem = () => {
       description,
     };
     axios
-      .post("http://localhost:5000/add-food", addedNewFoodInfo, {withCredentials:true})
+      .post("https://foodie-pal-server.vercel.app/add-food", addedNewFoodInfo, {
+        withCredentials: true,
+      })
       .then((res) => {
         Swal.fire({
           title: "Success!",
@@ -55,7 +57,7 @@ const AddFoodItem = () => {
       </Title>
       <div className="grid grid-cols-1 lg:grid-cols-4 items-center gap-6">
         <div className="lg:col-span-2">
-         <img src={bg} className="w-1/2" alt="" />
+          <img src={bg} className="w-1/2" alt="" />
         </div>
         <div className="lg:col-span-2">
           <form onSubmit={handleSubmit} className="  ">

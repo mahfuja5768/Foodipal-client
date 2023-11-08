@@ -1,6 +1,6 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Title from "../../hooks/Title";
-import bg1 from '../../assets/add.png'
+import bg1 from "../../assets/add.png";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -48,14 +48,14 @@ const OrderFood = () => {
         count,
       };
       axios
-        .put(`http://localhost:5000/update-quantity/${_id}`)
+        .put(`https://foodie-pal-server.vercel.app/update-quantity/${_id}`)
         .then((res) => {
           console.log(res.data);
         })
         .catch((err) => console.log(err.message));
 
       axios
-        .post("http://localhost:5000/order-foods", orderFoodInfo)
+        .post("https://foodie-pal-server.vercel.app/order-foods", orderFoodInfo)
         .then((res) => {
           Swal.fire({
             title: "Success!",
@@ -79,13 +79,10 @@ const OrderFood = () => {
 
   return (
     <div className="py-8 max-w-[1280px] mx-auto px-5 lg:px-12">
-      <Title>
-        {" "}
-        Welcome To Order Page,
-      </Title>
+      <Title> Welcome To Order Page,</Title>
       <div className="grid grid-cols-1 lg:grid-cols-4 items-center gap-6">
         <div className="lg:col-span-2">
-        <img src={bg1} className="w-1/2" alt="" />
+          <img src={bg1} className="w-1/2" alt="" />
         </div>
         <div className="lg:col-span-2">
           <form onSubmit={handleSubmit} className=" space-y-5">
