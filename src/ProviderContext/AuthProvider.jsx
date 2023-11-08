@@ -49,48 +49,48 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-
-      const loggedEmail = currentUser?.email || user?.email;
-      const loggedUser = { email: currentUser?.email };
-      setUser(currentUser);
-      if (currentUser) {
-        axios
-          .post("https://foodie-pal-server.vercel.app/jwt", loggedUser, {
-            withCredentials: true,
-          })
-          .then((res) => {
-            console.log("token response", res.data);
-          });
-      } else {
-        axios
-          .post("https://foodie-pal-server.vercel.app/logout", loggedEmail, {
-            withCredentials: true,
-          })
-          .then((res) => {
-            console.log(res.data);
-          });
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  });
-
   // useEffect(() => {
   //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
   //     setUser(currentUser);
-  //     console.log("observing current user!");
   //     setLoading(false);
+
+  //     const loggedEmail = currentUser?.email || user?.email;
+  //     const loggedUser = { email: currentUser?.email };
+  //     setUser(currentUser);
+  //     if (currentUser) {
+  //       axios
+  //         .post("https://foodie-pal-server.vercel.app/jwt", loggedUser, {
+  //           withCredentials: true,
+  //         })
+  //         .then((res) => {
+  //           console.log("token response", res.data);
+  //         });
+  //     } else {
+  //       axios
+  //         .post("https://foodie-pal-server.vercel.app/logout", loggedEmail, {
+  //           withCredentials: true,
+  //         })
+  //         .then((res) => {
+  //           console.log(res.data);
+  //         });
+  //     }
   //   });
+
   //   return () => {
   //     unsubscribe();
   //   };
-  // }, []);
+  // });
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log("observing current user!");
+      setLoading(false);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   const authInfo = {
     user,

@@ -34,9 +34,7 @@ const AddFoodItem = () => {
       description,
     };
     axios
-      .post("https://foodie-pal-server.vercel.app/add-food", addedNewFoodInfo, {
-        withCredentials: true,
-      })
+      .post("https://foodie-pal-server.vercel.app/add-food", addedNewFoodInfo)
       .then((res) => {
         Swal.fire({
           title: "Success!",

@@ -16,7 +16,7 @@ const FoodDetails = () => {
     madeBy,
     foodOrigin,
     description,
-  } = foodDetails;
+  } = foodDetails || {};
   return (
     <div className="max-w-[1280px] mx-auto px-4 my-12 grid md:grid-cols-3 gap-5 items-center">
       <div className=" md:col-span-2">

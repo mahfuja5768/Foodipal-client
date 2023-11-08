@@ -32,9 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/details/:id",
         loader: ({ params }) =>
-          fetch(`https://foodie-pal-server.vercel.app/all-foods/${params.id}`, {
-            credentials: "include",
-          }),
+          fetch(`https://foodie-pal-server.vercel.app/all-foods/${params.id}`),
         element: (
           <PrivateRoute>
             <FoodDetails></FoodDetails>
@@ -44,9 +42,7 @@ const router = createBrowserRouter([
       {
         path: "/orderFood/:id",
         loader: ({ params }) =>
-          fetch(`https://foodie-pal-server.vercel.app/all-foods/${params.id}`, {
-            credentials: "include",
-          }),
+          fetch(`https://foodie-pal-server.vercel.app/all-foods/${params.id}`),
         element: (
           <PrivateRoute>
             <OrderFood></OrderFood>

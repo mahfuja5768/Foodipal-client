@@ -44,8 +44,7 @@ const Modal = ({ food, refetch }) => {
     axios
       .put(
         `https://foodie-pal-server.vercel.app/update-food/${_id}`,
-        updatedFoodInfo,
-        { withCredentials: true }
+        updatedFoodInfo
       )
       .then((res) => {
         console.log(res.data);

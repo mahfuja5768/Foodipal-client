@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import Title from "../../../hooks/Title";
 import MyAddedFood from "./MyAddedFood";
 import useAuth from "../../../hooks/useAuth";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import axios from "axios";
 
 const MyAddedFoods = () => {
@@ -24,7 +24,7 @@ const MyAddedFoods = () => {
   if (isPending) {
     return (
       <div className="text-center my-8">
-        <span className="loading loading-ring  text-red"></span>
+        <span className="loading loading-ring loading-lg  text-red"></span>
       </div>
     );
   }
