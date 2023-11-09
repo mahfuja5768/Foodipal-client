@@ -15,12 +15,14 @@ const AllFood = ({ food }) => {
       }}
     >
       <div className="  rounded-bl-3xl">
-        <div>
-          <img
+        <div className=" h-[300px] border-2 relative border-red rounded-t-full">
+          {
+            foodImage ? <img
             src={foodImage}
-            className="w-full h-[300px] border-2 border-red rounded-t-full"
+            className="h-full w-full rounded-t-full"
             alt=""
-          />
+          /> : <p className="flex justify-center items-center mt-12 text-red">No Image</p>
+          }
         </div>
         <div className="  space-y-4 px-12 py-4 h-[350px] border-2 border-red rounded-b-full">
           <h3 className="text-2xl font-semibold">
