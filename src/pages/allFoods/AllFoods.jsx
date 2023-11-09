@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import AllFood from "./AllFood";
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import Button from "../../hooks/Button";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const AllFoods = () => {
   const { loading } = useAuth();
@@ -84,10 +86,11 @@ const AllFoods = () => {
       <div>
         <div className="flex  lg:flex-row flex-col gap-5 items-center justify-center my-12">
           <div className="form-control ">
+            <h2 className="text-red text-3xl mb-4 font-bold">Search your food by name:</h2>
             <div className="input-group">
               <select
                 onChange={(e) => setFoodName(e.target.value)}
-                className="select select-bordered text-black"
+                className="select select-bordered me-2 rounded-2xl border-2 border-red text-black"
               >
                 {foodNames.map((food, idx) => (
                   <option className="text-black" key={idx}>
@@ -95,7 +98,7 @@ const AllFoods = () => {
                   </option>
                 ))}
               </select>
-              <button className="btn">Go</button>
+              <Button>Go</Button>
             </div>
           </div>
         </div>
@@ -107,17 +110,17 @@ const AllFoods = () => {
       </div>
       <div className="flex my-12 justify-center items-center gap-2 lg:gap-4 ">
         <button
-          className="bg-red text-sm md:text-lg hover:text-red hover:bg-transparent text-white font-bold btn  rounded-full"
+          className="bg-red text-sm md:text-lg border-none hover:text-red hover:bg-transparent text-white font-bold btn  rounded-full"
           onClick={handlePrev}
         >
-          Prev
+          <FaAngleLeft></FaAngleLeft>
         </button>
         {pages.map((page) => (
           <button
             className={
               currentPage === page
-                ? "bg-red text-white hover:text-red hover:bg-transparent font-bold btn text-sm md:text-lg rounded-full"
-                : "bg-transparent border-4  hover:text-red hover:bg-transparent text-sm md:text-lg border-red font-bold btn rounded-full "
+                ? "font-bold btn text-sm md:text-lg rounded-full border-2 border-red"
+                : "text-sm md:text-lg font-bold btn rounded-full border-2 border-transparent"
             }
             key={page}
             onClick={() => setCurrentPage(page)}
@@ -127,12 +130,12 @@ const AllFoods = () => {
         ))}
         <button
           onClick={handleNext}
-          className=" hover:text-red hover:bg-transparent bg-red text-white font-bold btn text-sm md:text-lg rounded-full"
+          className=" hover:text-red border-none hover:bg-transparent bg-red text-white font-bold btn text-sm md:text-lg rounded-full"
         >
-          Next
+          <FaAngleRight></FaAngleRight>
         </button>
 
-        <select
+        <select className="border-2 border-red p-2 font-bold text-black"
           value={itemsPerPage}
           onChange={handleItemsPerPage}
           name=""

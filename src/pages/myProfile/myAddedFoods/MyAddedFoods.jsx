@@ -15,7 +15,7 @@ const MyAddedFoods = () => {
     queryKey: ["addedFood"],
     queryFn: async () => {
       const data = await axios.get(url).then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
       });
       return data;

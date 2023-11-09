@@ -12,7 +12,7 @@ const Features = () => {
       }}
     >
       <Title>Features</Title>
-      <div className="hero-content max-w-[1280px] mx-auto ">
+      <div className="hero-content max-w-[1280px] mx-auto -mt-12">
         <div className="grid grid-cols-1 lg:grid-cols-4">
           <div className=" lg:col-span-3 space-y-6 ">
             <h1 className="mb-4 text-2xl md:text-4xl leading-9 font-bold w-full  md:w-10/12  lg:w-full mx-auto">

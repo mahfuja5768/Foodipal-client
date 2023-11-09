@@ -13,7 +13,7 @@ const Banner = () => {
       }}
     >
       <div className="bg-gradient-to-t from-black to-transparent px-4">
-        <div className=" lg:col-span-3 max-w-[1280px] mx-auto text-white py-[250px]">
+        <div className="md:px-5 px-2 lg:col-span-3 max-w-[1280px] mx-auto text-white md:py-[220px] py-[90px]">
           <motion.h1
             initial={{ x: -1000 }}
             animate={{ x:  [900, 0] }}
@@ -22,7 +22,7 @@ const Banner = () => {
               delay: "1",
             }}
           >
-            <h1 className="mb-4 text-3xl md:text-5xl leading-9 font-bold w-full  md:w-10/12  lg:w-full mx-auto">
+            <h1 className="mb-4 text-3xl md:text-5xl leading-9 font-bold w-full  md:w-10/12  lg:w-full ">
               Welcome to Foodie Pal
             </h1>
           </motion.h1>
@@ -30,7 +30,7 @@ const Banner = () => {
           <h2 className="text-xl md:text-2xl font-semibold">
             Discover, Savor, and Manage Your Culinary Experience
           </h2>
-          <p className="my-3 md:w-3/4 lg:w-full mx-auto text-[#bebebe]">
+          <p className="my-3 md:w-3/4 text-[#bebebe]">
             Our restaurant is thrilled to introduce our new online platform,
             specially designed for your convenience. As a restaurant manager, we
             understand the importance of providing a seamless experience for our

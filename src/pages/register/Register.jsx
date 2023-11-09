@@ -107,7 +107,7 @@ const Register = () => {
   };
   return (
     <div
-      className="h-screen py-0 lg:py-8 px-4"
+      className="h-[100vh] py-0 lg:py-8 px-4"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
@@ -119,11 +119,11 @@ const Register = () => {
           <div className="lg:col-span-2">
             <img src={gif} alt="" />
           </div>
-          <div className="lg:col-span-2">
-            <h1 className=" lg:text-5xl text-start text-4xl font-bold  my-12">
+          <div className="lg:col-span-2 ">
+            <h1 className=" lg:text-5xl text-center text-4xl font-bold  my-12">
               Welcome to <span className="text-red">register</span> page,
             </h1>
-            <form onSubmit={handleSubmit} className=" space-y-5">
+            <form onSubmit={handleSubmit} className=" space-y-5 text-black">
               <div className="">
                 <div className="form-control">
                   <label>
@@ -175,7 +175,7 @@ const Register = () => {
                   className="input input-bordered  border-2 border-red rounded-none w-full"
                 />
               </div>
-              <p className=" text-lg my-5">
+              <p className=" text-lg my-5  text-red">
                 Already have an account ?
                 <Link to="/login" className="link text-blue-500 ms-2">
                   Login now

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const AllFood = ({ food }) => {
   // console.log(Object.keys(food).join(","));
-  const { _id, foodName, foodImage, foodCategory, price, count } = food;
+  const { _id, foodName, foodImage, foodCategory, price, quantity} = food;
   //   console.log({foodName});
   return (
     <motion.div
@@ -22,12 +22,15 @@ const AllFood = ({ food }) => {
             alt=""
           />
         </div>
-        <div className="  space-y-4 px-12 py-4 h-[300px] border-2 border-red rounded-b-full">
+        <div className="  space-y-4 px-12 py-4 h-[350px] border-2 border-red rounded-b-full">
           <h3 className="text-2xl font-semibold">
             Name: <span className="text-red font-bold">{foodName}</span>{" "}
           </h3>
           <h3 className="text-2xl font-semibold ">
             Category: <span className="text-red font-bold">{foodCategory}</span>{" "}
+          </h3>
+          <h3 className="text-2xl font-semibold ">
+          Available Quantity: <span className="text-red font-bold">{quantity}</span>{" "}
           </h3>
           <h3 className="text-2xl font-semibold ">
             Price: <span className="text-red font-bold">${price}</span>{" "}

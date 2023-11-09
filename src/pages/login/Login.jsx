@@ -64,7 +64,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen py-0 lg:py-8 px-4"   style={{
+    <div className="py-0 lg:py-8 px-4 h-[100vh]"   style={{
       backgroundImage: `url(${bg})`,
       backgroundSize: "cover", 
       backgroundPosition: "center", 
@@ -74,13 +74,13 @@ const Login = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-4 items-center gap-6">
           <div className="lg:col-span-2">
-         <img src={gif} alt="" />
+         <img src={gif} alt="" className="flex justify-center items-center" />
           </div>
           <div className="lg:col-span-2">
-          <h1 className=" lg:text-5xl text-start text-4xl font-bold  my-12">
+          <h1 className=" lg:text-5xl text-center text-4xl font-bold  my-12">
           Welcome to <span className="text-red">login</span> page,
         </h1>
-            <form onSubmit={handleSubmit} className=" space-y-5">
+            <form onSubmit={handleSubmit} className=" space-y-5  text-black">
               <div className="form-control">
                
                   <input
@@ -110,7 +110,7 @@ const Login = () => {
                   </span>
                 </div>
               </div>
-              <p className=" text-lg my-5">
+              <p className=" text-lg my-5 text-red">
                 New to this
                 <Link to="/register" className="link text-blue-500 ms-2">
                   Register now

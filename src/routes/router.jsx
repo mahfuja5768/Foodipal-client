@@ -12,6 +12,7 @@ import MyAddedFoods from "../pages/myProfile/myAddedFoods/MyAddedFoods";
 import AddFoodItem from "./../pages/myProfile/addFoodItem/AddFoodItem";
 import MyOrderedFoods from "./../pages/myProfile/myOrderedFoods/MyOrderedFoods";
 import OrderFood from './../pages/orderFoods/OrderFood';
+import UpdateFood from "../pages/myProfile/updateFood/UpdateFood";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,16 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyOrderedFoods></MyOrderedFoods>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updateAddedFood/:id",
+        loader: ({ params }) =>
+        fetch(`https://foodie-pal-server.vercel.app/all-foods/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateFood></UpdateFood>
           </PrivateRoute>
         ),
       },

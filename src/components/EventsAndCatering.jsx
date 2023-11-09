@@ -2,7 +2,7 @@ import Title from "../hooks/Title";
 
 const EventsAndCatering = () => {
   return (
-    <div className="max-w-[1280px] mx-auto">
+    <div className="max-w-[1280px] mx-auto px-4">
       <Title>Events And Catering</Title>
       <p className="-mt-12">
         At Foodie Pal, we believe in making every occasion special. Our
@@ -11,7 +11,7 @@ const EventsAndCatering = () => {
         planning a birthday party, anniversary celebration, corporate gathering,
         or any other special event, we have you covered.
       </p>
-      <h3 className="text-3xl font-bold text-red my-5">
+      <h3 className="md:text-3xl text-2xl font-bold text-red my-5">
         Why Choose Foodie Pal for Your Event:
       </h3>
       <p className="my-3">
@@ -44,11 +44,11 @@ const EventsAndCatering = () => {
         and tailor our services to meet your specific needs, including decor,
         music, and more.
       </p>
-      <h3 className="text-3xl font-bold text-red mt-5">
+      <h3 className="md:text-3xl text-2xl font-bold text-red mt-5">
       Catering Services:
       </h3>
       <p>In addition to hosting events at our restaurant, we also offer catering services to bring the flavors of [Restaurant Name] to your chosen location. Our experienced catering team will provide an exquisite dining experience at your event, whether it's a wedding, corporate luncheon, or any other gathering.</p>
-   <div className="grid grid-cols-1 md:grid-cols-4 my-12">
+   <div className="md:grid grid-cols-1 md:grid-cols-4 my-12 gap-6  flex justify-center flex-col items-center">
    <img src={'https://i.ibb.co/zPY3Kb0/images-1.jpg'} className="rounded-3xl w-[300px] h-[300px]" alt="" />
    <img src={'https://i.ibb.co/9pkvK1D/images-2.jpg'} className="rounded-3xl w-[300px] h-[300px]" alt="" />
    <img src={'https://i.ibb.co/yk4T0dR/images-3.jpg'} className="rounded-3xl w-[300px] h-[300px]" alt="" />

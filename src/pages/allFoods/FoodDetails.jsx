@@ -4,14 +4,14 @@ import Button from "../../hooks/Button";
 const FoodDetails = () => {
   const [foodDetails] = useLoaderData();
   //   console.log(Object.keys(foodDetails).join(","));
-  //    console.log(foodDetails)
+     console.log(foodDetails)
   const {
     _id,
     foodName,
     foodImage,
     foodCategory,
     price,
-    count,
+    name,
     quantity,
     madeBy,
     foodOrigin,
@@ -19,8 +19,14 @@ const FoodDetails = () => {
   } = foodDetails || {};
   return (
     <div className="max-w-[1280px] mx-auto px-4 my-12 grid md:grid-cols-3 gap-5 items-center">
-      <div className=" md:col-span-2">
-        <img src={foodImage} className="h-[500px] w-full rounded-xl" alt="" />
+      <div className=" md:col-span-2 h-[500px]">
+        {foodImage ? (
+            <img src={foodImage} className="w-full h-full " alt="" />
+          ) : (
+            <p className="w-full h-full flex items-center justify-center">
+              No Image
+            </p>
+          )}
       </div>
       <div>
         <div className="border-2 border-red rounded-xl  space-y-2 p-5">
@@ -35,9 +41,15 @@ const FoodDetails = () => {
             <h3 className="text-2xl font-semibold ">
               Price: <span className="text-red font-bold">${price}</span>{" "}
             </h3>
-            <h3 className="text-2xl font-semibold ">
-              Made By: <span className="text-red font-bold">{madeBy}</span>{" "}
-            </h3>
+            {madeBy ? (
+              <h3 className="text-2xl font-semibold ">
+                Made By: <span className="text-red font-bold">{madeBy}</span>{" "}
+              </h3>
+            ) : (
+              <h3 className="text-2xl font-semibold ">
+                Made By: <span className="text-red font-bold">{name}</span>{" "}
+              </h3>
+            )}
             <h3 className="text-2xl font-semibold ">
               Origin: <span className="text-red font-bold">{foodOrigin}</span>{" "}
             </h3>

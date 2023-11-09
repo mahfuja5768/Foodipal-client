@@ -1,12 +1,26 @@
-import Lottie from "lottie-react";
+// import Lottie from "lottie-react";
+import axios from "axios";
 import Title from "../../../hooks/Title";
 import Swal from "sweetalert2";
-import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
-import bg from "../../../assets/add.png";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
-const AddFoodItem = () => {
+const UpdateFood = () => {
+  const updateFood = useLoaderData()[0];
+  const {
+    _id,
+    foodName,
+    foodCategory,
+    price,
+    foodOrigin,
+    foodImage,
+    quantity,
+    description,
+  } = updateFood;
+  console.log(updateFood);
   const { user } = useAuth();
+
+  const goTo = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,11 +34,11 @@ const AddFoodItem = () => {
     const foodOrigin = form.get("foodOrigin");
     const foodCategory = form.get("foodCategory");
     const description = form.get("description");
-    const addedNewFoodInfo = {
+    formValues.reset();
+    const updatedFoodInfo = {
       email: user?.email,
       name: user?.displayName,
       date,
-      count: 0,
       foodName,
       foodImage,
       foodCategory,
@@ -34,15 +48,20 @@ const AddFoodItem = () => {
       description,
     };
     axios
-      .post("https://foodie-pal-server.vercel.app/add-food", addedNewFoodInfo)
+      .put(
+        `https://foodie-pal-server.vercel.app/update-food/${_id}`,
+        updatedFoodInfo
+      )
       .then((res) => {
+        console.log(res.data);
         Swal.fire({
           title: "Success!",
-          text: "Successfully food added!",
+          text: "Successfully food updated!",
           icon: "success",
           confirmButtonText: "Done",
         });
         formValues.reset();
+        goTo("/myAddedFoods");
       })
       .catch((err) => console.log(err.message));
   };
@@ -51,11 +70,11 @@ const AddFoodItem = () => {
     <div className="py-8 max-w-[1280px] mx-auto px-5 lg:px-12">
       <Title>
         {" "}
-        Welcome To Add Food Page,
+        Welcome To <span className="text-red">Food Update </span> Page,
       </Title>
-      <div className="grid grid-cols-1 lg:grid-cols-4 items-center gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 items-center gap-8">
         <div className="lg:col-span-2">
-          <img src={bg} className="w-1/2" alt="" />
+          <img src={"https://i.ibb.co/xCr5wNH/giphy-1.gif"} alt="" />
         </div>
         <div className="lg:col-span-2">
           <form onSubmit={handleSubmit} className="  ">
@@ -64,10 +83,11 @@ const AddFoodItem = () => {
                 <label className="mb-2 text-lg font-medium">Food Name:</label>
                 <label>
                   <input
+                    defaultValue={foodName}
                     type="text"
                     name="foodName"
                     placeholder="Enter your  food name
-                      "
+                          "
                     className="input input-bordered text-black border-2 border-red rounded-none w-full"
                     required
                   />
@@ -79,6 +99,7 @@ const AddFoodItem = () => {
                 </label>
                 <label>
                   <input
+                    defaultValue={quantity}
                     type="number"
                     name="quantity"
                     placeholder="quantity"
@@ -91,6 +112,7 @@ const AddFoodItem = () => {
                 <label className="mb-2 text-lg font-medium">Food Origin:</label>
                 <label>
                   <input
+                    defaultValue={foodOrigin}
                     type="text"
                     name="foodOrigin"
                     placeholder="food origin"
@@ -105,6 +127,7 @@ const AddFoodItem = () => {
                 </label>
                 <label>
                   <input
+                    defaultValue={foodCategory}
                     type="text"
                     name="foodCategory"
                     placeholder="food category"
@@ -117,6 +140,7 @@ const AddFoodItem = () => {
                 <label className="mb-2 text-lg font-medium">Food Price:</label>
                 <label>
                   <input
+                    defaultValue={price}
                     type="number"
                     name="price"
                     placeholder="price"
@@ -138,7 +162,7 @@ const AddFoodItem = () => {
                 </label>
               </div>
               <div className="form-control my-5">
-                <label className="mb-2 text-lg font-medium"> Email:</label>
+                <label className="mb-2 text-lg font-medium">Buyer Email:</label>
                 <label>
                   <input
                     defaultValue={user?.email}
@@ -152,7 +176,7 @@ const AddFoodItem = () => {
                 </label>
               </div>
               <div className="form-control my-5">
-                <label className="mb-2 text-lg font-medium">Added by :</label>
+                <label className="mb-2 text-lg font-medium">Buyer Name:</label>
                 <label>
                   <input
                     defaultValue={user?.displayName}
@@ -170,10 +194,11 @@ const AddFoodItem = () => {
                   Food photo url:
                 </label>
                 <input
+                  defaultValue={foodImage}
                   type="url"
                   name="foodImage"
                   placeholder="Enter your food photo url"
-                  className="input input-bordered text-black border-2 border-red rounded-none w-full"
+                  className="input input-bordered  border-2 text-black border-red rounded-none w-full"
                 />
               </div>
               <div className="form-control  my-5">
@@ -181,6 +206,7 @@ const AddFoodItem = () => {
                   Food description:
                 </label>
                 <input
+                  defaultValue={description}
                   type="text"
                   name="description"
                   placeholder="description"
@@ -191,7 +217,7 @@ const AddFoodItem = () => {
             <input
               type="submit"
               className="w-full mt-5 mx-auto cursor-pointer hover:bg-hoverText bg-secondary text-white my-2 rounded-lg py-4 font-bold"
-              value="  Add Food"
+              value="  Update Food"
             />
           </form>
         </div>
@@ -199,5 +225,4 @@ const AddFoodItem = () => {
     </div>
   );
 };
-
-export default AddFoodItem;
+export default UpdateFood;

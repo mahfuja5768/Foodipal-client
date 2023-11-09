@@ -6,55 +6,56 @@ import ThemeToggler from "./ThemeToggler";
 import userProfile from "../assets/user.png";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import useCoreNav from "../hooks/useCoreNav";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { user, logOut } = useAuth();
 
-  const coreNav = (
-    <>
-      <ul
-        tabIndex={0}
-        className="dropdown-content text-black z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-      >
-        <li>
-          <NavLink
-            to="/myAddedFoods"
-            className={({ isActive }) =>
-              isActive
-                ? " underline decoration-red decoration-4 underline-offset-8"
-                : "hover:text-red"
-            }
-          >
-            My added foods
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/addAFood"
-            className={({ isActive }) =>
-              isActive
-                ? " underline decoration-red decoration-4 underline-offset-8"
-                : "hover:text-red"
-            }
-          >
-            Add a food item
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/myOrderedFood"
-            className={({ isActive }) =>
-              isActive
-                ? " underline decoration-red decoration-4 underline-offset-8"
-                : "hover:text-red"
-            }
-          >
-            My ordered food
-          </NavLink>
-        </li>
-      </ul>
-    </>
+  const coreNav = useCoreNav();
+
+  const corNav2 = (
+    <ul
+      tabIndex={0}
+      className="dropdown-content text-black z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+    >
+      <li onClick={() => setOpen(!open)}>
+        <NavLink
+          to="/myAddedFoods"
+          className={({ isActive }) =>
+            isActive
+              ? " underline decoration-red decoration-4 underline-offset-8"
+              : "hover:text-red"
+          }
+        >
+          My added foods
+        </NavLink>
+      </li>
+      <li onClick={() => setOpen(!open)}>
+        <NavLink
+          to="/addAFood"
+          className={({ isActive }) =>
+            isActive
+              ? " underline decoration-red decoration-4 underline-offset-8"
+              : "hover:text-red"
+          }
+        >
+          Add a food item
+        </NavLink>
+      </li>
+      <li onClick={() => setOpen(!open)}>
+        <NavLink
+          to="/myOrderedFood"
+          className={({ isActive }) =>
+            isActive
+              ? " underline decoration-red decoration-4 underline-offset-8"
+              : "hover:text-red"
+          }
+        >
+          My ordered food
+        </NavLink>
+      </li>
+    </ul>
   );
 
   const handleLogout = () => {
@@ -90,9 +91,7 @@ const Navbar = () => {
           <div>
             <Link to="/">
               <div className=" h-16 flex items-center ">
-                <h3 className="text-red text-3xl font-bold -ms-4">
-                  Foodie Pal
-                </h3>
+                <h3 className="text-red text-3xl font-bold">Foodie Pal</h3>
               </div>
             </Link>
           </div>
@@ -173,7 +172,7 @@ const Navbar = () => {
                       tabIndex={0}
                       className="btn m-1 bg-transparent hover:bg-transparent border-none"
                     >
-                       <img
+                      <img
                         src={userProfile}
                         className=" w-10 h-10 cursor-pointer rounded-full select-none"
                         alt="user photo"
@@ -208,10 +207,10 @@ const Navbar = () => {
           </div>
         </div>
         <ul
-          className={`flex flex-col justify-center items-start font-bold text-lg  text-white z-10   gap-4 px-8 py-6 pb-12 bg-red w-full absolute duration-700 all ${
+          className={`font-bold text-lg  text-white z-10   gap-4 px-8 py-6 pb-12 bg-red w-full absolute duration-700 all ${
             open ? "top-16" : "top-[-800px]"
           }`}
-        >
+        >  <div className="flex justify-between "> <div className="space-y-3"> 
           <li onClick={() => setOpen(!open)}>
             <NavLink
               to="/"
@@ -260,22 +259,18 @@ const Navbar = () => {
               Register
             </NavLink>
           </li>
-          <li>
-            <span onClick={() => setOpen(!open)}>
-              <ThemeToggler></ThemeToggler>
-            </span>
-          </li>
+          
 
           <li>
             {user && (
-              <div className=" flex flex-col items-start gap-2 justify-start mx-2">
+              <div className=" flex flex-col items-start gap-2 -ms-5 justify-start">
                 {user && (
-                  <div className=" flex  items-start flex-col gap-2 justify-start ">
+                  <div className=" flex  items-center gap-1 justify-start ">
                     {user?.photoURL ? (
                       <div className="dropdown dropdown-left">
                         <label
                           tabIndex={0}
-                          className="w-full btn m-1 bg-transparent hover:bg-transparent border-none"
+                          className="w-full btn bg-transparent hover:bg-transparent border-none"
                         >
                           <img
                             src={user?.photoURL}
@@ -283,7 +278,7 @@ const Navbar = () => {
                             alt="user photo"
                           />
                         </label>
-                        {coreNav}
+                        {corNav2}
                       </div>
                     ) : (
                       <div className="dropdown dropdown-bottom">
@@ -292,16 +287,16 @@ const Navbar = () => {
                           className="btn m-1 bg-transparent hover:bg-transparent border-none"
                         >
                           <img
-                        src={userProfile}
-                        className=" w-10 h-10 cursor-pointer rounded-full select-none"
-                        alt="user photo"
-                      />
+                            src={userProfile}
+                            className=" w-10 h-10 cursor-pointer rounded-full select-none"
+                            alt="user photo"
+                          />
                         </label>
-                        {coreNav}
+                        {corNav2}
                       </div>
                     )}
 
-                    <h3 className=" text-sm text-center mt-1">
+                    <h3 className=" text-sm text-center font-bold">
                       {user?.displayName}
                     </h3>
                   </div>
@@ -309,22 +304,31 @@ const Navbar = () => {
               </div>
             )}
           </li>
+          
           <li onClick={() => setOpen(!open)}>
             {user && (
               <Link
                 to="/login"
                 onClick={handleLogout}
-                className="btn bg-white border-none text-black"
+                className="btn bg-white border-none btn-sm text-black"
               >
                 Log out
               </Link>
             )}
             {!user && (
-              <Link to="/login" className="btn bg-white border-none text-black">
+              <Link to="/login" className="btn btn-sm bg-white border-none text-black">
                 Login
               </Link>
             )}
+          </li> </div>
+          <div>
+          <li className="mt-2">
+            <span onClick={() => setOpen(!open)}>
+              <ThemeToggler></ThemeToggler>
+            </span>
           </li>
+          </div>
+          </div>
         </ul>
       </nav>
     </div>
