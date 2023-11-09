@@ -1,4 +1,5 @@
 import Title from "../hooks/Title";
+import { motion } from "framer-motion";
 
 const EventsAndCatering = () => {
   return (
@@ -45,15 +46,45 @@ const EventsAndCatering = () => {
         music, and more.
       </p>
       <h3 className="md:text-3xl text-2xl font-bold text-red mt-5">
-      Catering Services:
+        Catering Services:
       </h3>
-      <p>In addition to hosting events at our restaurant, we also offer catering services to bring the flavors of [Restaurant Name] to your chosen location. Our experienced catering team will provide an exquisite dining experience at your event, whether it's a wedding, corporate luncheon, or any other gathering.</p>
-   <div className="md:grid grid-cols-1 md:grid-cols-4 my-12 gap-6  flex justify-center flex-col items-center">
-   <img src={'https://i.ibb.co/zPY3Kb0/images-1.jpg'} className="rounded-3xl w-[300px] h-[300px]" alt="" />
-   <img src={'https://i.ibb.co/9pkvK1D/images-2.jpg'} className="rounded-3xl w-[300px] h-[300px]" alt="" />
-   <img src={'https://i.ibb.co/yk4T0dR/images-3.jpg'} className="rounded-3xl w-[300px] h-[300px]" alt="" />
-   <img src={'https://i.ibb.co/m9f3D7h/images-4.jpg'} className="rounded-3xl w-[300px] h-[300px]" alt="" />
-   </div>
+      <p>
+        In addition to hosting events at our restaurant, we also offer catering
+        services to bring the flavors of [Restaurant Name] to your chosen
+        location. Our experienced catering team will provide an exquisite dining
+        experience at your event, whether it's a wedding, corporate luncheon, or
+        any other gathering.
+      </p>
+      <motion.div
+        animate={{
+          scale: [1, 2, 2, 1, 1],
+          rotate: [0, 0, 270, 270, 0],
+          borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+        }}
+      >
+        <div className="md:grid grid-cols-1 md:grid-cols-4 my-12 gap-6  flex justify-center flex-col items-center">
+          <img
+            src={"https://i.ibb.co/zPY3Kb0/images-1.jpg"}
+            className="rounded-3xl w-[300px] h-[300px]"
+            alt=""
+          />
+          <img
+            src={"https://i.ibb.co/9pkvK1D/images-2.jpg"}
+            className="rounded-3xl w-[300px] h-[300px]"
+            alt=""
+          />
+          <img
+            src={"https://i.ibb.co/yk4T0dR/images-3.jpg"}
+            className="rounded-3xl w-[300px] h-[300px]"
+            alt=""
+          />
+          <img
+            src={"https://i.ibb.co/m9f3D7h/images-4.jpg"}
+            className="rounded-3xl w-[300px] h-[300px]"
+            alt=""
+          />
+        </div>
+      </motion.div>
     </div>
   );
 };

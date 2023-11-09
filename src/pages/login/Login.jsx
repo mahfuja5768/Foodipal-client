@@ -5,9 +5,8 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import gif from "../../assets/login-form.gif";
 
- 
 const Login = () => {
-  const bg ='https://i.ibb.co/PDhh91Q/img-19.png'
+  const bg = "https://i.ibb.co/PDhh91Q/img-19.png";
   const [loginError, setLoginError] = useState("");
   const [showPass, setShowPass] = useState(true);
   const { signInUser, googleSign } = useAuth();
@@ -27,7 +26,6 @@ const Login = () => {
 
     setLoginError("");
     formValues.reset();
-
 
     signInUser(email, password)
       .then((res) => {
@@ -64,44 +62,48 @@ const Login = () => {
   };
 
   return (
-    <div className="py-0 lg:py-8 px-4 h-[100vh]"   style={{
-      backgroundImage: `url(${bg})`,
-      backgroundSize: "cover", 
-      backgroundPosition: "center", 
-
-    }}>
+    <div
+      className="py-0 lg:py-8 px-4 h-[100vh]"
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className=" py-8 max-w-[1280px] mx-auto px-4 lg:px-12">
-
         <div className="grid grid-cols-1 lg:grid-cols-4 items-center gap-6">
           <div className="lg:col-span-2">
-         <img src={gif} alt="" className="flex justify-center items-center" />
+            <img
+              src={gif}
+              alt=""
+              className="flex justify-center items-center"
+            />
           </div>
           <div className="lg:col-span-2">
-          <h1 className=" lg:text-5xl text-center text-4xl font-bold  my-12">
-          Welcome to <span className="text-red">login</span> page,
-        </h1>
+            <h1 className=" lg:text-5xl text-center text-4xl font-bold  my-12">
+              Welcome to <span className="text-red">login</span> page,
+            </h1>
             <form onSubmit={handleSubmit} className=" space-y-5  text-black">
               <div className="form-control">
-               
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    className="input input-bordered  border-2 border-red rounded-none w-full"
-                    required
-                  />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  className="input input-bordered  border-2 border-red rounded-none w-full"
+                  required
+                />
               </div>
 
               <div className="form-control  text-lg">
                 <div className=" flex items-center">
-                <input
-                  type={showPass ? "password" : "text"}
-                  name="password"
-                  placeholder="password"
-                  className="input w-full border-2 border-red rounded-none input-bordered text-black"
-                  required
-                />
-                <span className="-ms-12">
+                  <input
+                    type={showPass ? "password" : "text"}
+                    name="password"
+                    placeholder="password"
+                    className="input w-full border-2 border-red rounded-none input-bordered text-black"
+                    required
+                  />
+                  <span className="-ms-12">
                     {showPass ? (
                       <FaEyeSlash onClick={() => setShowPass(!showPass)} />
                     ) : (
