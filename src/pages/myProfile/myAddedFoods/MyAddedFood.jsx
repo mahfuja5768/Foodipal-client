@@ -8,7 +8,7 @@ const MyAddedFood = ({ food }) => {
       <div className=" flex gap-3 ">
         <div className="md:w-[250px] w-[200px] border-2 border-red rounded-l-3xl">
           {foodImage ? (
-            <img src={foodImage} className="w-full h-full " alt="" />
+            <img src={foodImage} className="w-full h-full rounded-l-3xl" alt="" />
           ) : (
             <p className="w-full h-full flex items-center justify-center">
               No Image

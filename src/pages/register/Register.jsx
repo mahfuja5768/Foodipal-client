@@ -37,15 +37,15 @@ const Register = () => {
     setRegisterError("");
     formValues.reset();
 
-    // if (name.length === 0 || password.length < 0) {
-    //   return;
-    // } else if (password.length < 6) {
-    //   return setRegisterError(" The password is less than 6 characters");
-    // } else if (!/[A-Z]/.test(password)) {
-    //   return setRegisterError(" The password don't have a capital letter");
-    // } else if (!/[!#$%&?]/.test(password)) {
-    //   return setRegisterError(" The password don't have a special character");
-    // }
+    if (name.length === 0 || password.length < 0) {
+      return;
+    } else if (password.length < 6) {
+      return setRegisterError(" The password is less than 6 characters");
+    } else if (!/[A-Z]/.test(password)) {
+      return setRegisterError(" The password don't have a capital letter");
+    } else if (!/[!#$%&?]/.test(password)) {
+      return setRegisterError(" The password don't have a special character");
+    }
 
     createUser(email, password)
       .then((res) => {

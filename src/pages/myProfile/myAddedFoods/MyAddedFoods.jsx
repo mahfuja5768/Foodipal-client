@@ -4,6 +4,8 @@ import MyAddedFood from "./MyAddedFood";
 import useAuth from "../../../hooks/useAuth";
 // import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import Button from "../../../hooks/Button";
 
 const MyAddedFoods = () => {
   const bg = "https://i.ibb.co/PDhh91Q/img-19.png";
@@ -11,7 +13,7 @@ const MyAddedFoods = () => {
   // const axiosSecure = useAxiosSecure();
 
   const url = `https://foodie-pal-server.vercel.app/added-food?email=${user?.email}`;
-  const { data, isError, error, isPending, refetch } = useQuery({
+  const { data, isError, error, isPending } = useQuery({
     queryKey: ["addedFood"],
     queryFn: async () => {
       const data = await axios.get(url).then((res) => {
@@ -44,15 +46,22 @@ const MyAddedFoods = () => {
       <div>
         <Title>Your Added Foods</Title>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {data?.map((food) => (
-          <MyAddedFood
-            key={food._id}
-            food={food}
-            refetch={refetch}
-          ></MyAddedFood>
-        ))}
-      </div>
+      {!data.length ? (
+        <div className="flex justify-center items-center flex-col">
+          <p className="text-3xl text-red font-bold mb-5">
+            You have not added food yet!
+          </p>
+          <Link to="/addAFood">
+            <Button>Go To Add Food</Button>
+          </Link>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {data?.map((food) => (
+            <MyAddedFood key={food._id} food={food}></MyAddedFood>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

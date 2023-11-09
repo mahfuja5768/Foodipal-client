@@ -21,7 +21,7 @@ const FoodDetails = () => {
     <div className="max-w-[1280px] mx-auto px-4 my-12 grid md:grid-cols-3 gap-5 items-center">
       <div className=" md:col-span-2 h-[500px]">
         {foodImage ? (
-            <img src={foodImage} className="w-full h-full " alt="" />
+            <img src={foodImage} className="w-full h-full rounded-3xl" alt="" />
           ) : (
             <p className="w-full h-full flex items-center justify-center">
               No Image

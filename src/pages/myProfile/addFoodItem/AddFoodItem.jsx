@@ -4,10 +4,11 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 import bg from "../../../assets/add.png";
+import { useNavigate } from "react-router-dom";
 
 const AddFoodItem = () => {
   const { user } = useAuth();
-
+  const goTo = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const formValues = e.target;
@@ -43,6 +44,7 @@ const AddFoodItem = () => {
           confirmButtonText: "Done",
         });
         formValues.reset();
+        goTo('/myAddedFoods')
       })
       .catch((err) => console.log(err.message));
   };

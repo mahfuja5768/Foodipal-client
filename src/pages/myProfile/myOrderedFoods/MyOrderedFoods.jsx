@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import Title from "../../../hooks/Title";
 import MyOrderedFood from "./MyOrderedFood";
 import useAuth from "../../../hooks/useAuth";
+import { Link } from "react-router-dom";
+import Button from "../../../hooks/Button";
 
 const MyOrderedFoods = () => {
   const { user } = useAuth();
@@ -34,15 +36,26 @@ const MyOrderedFoods = () => {
       <div>
         <Title>Your Ordered Foods</Title>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {data?.map((food) => (
-          <MyOrderedFood
-            key={food._id}
-            food={food}
-            refetch={refetch}
-          ></MyOrderedFood>
-        ))}
-      </div>
+      {!data.length ? (
+        <div className="flex justify-center items-center flex-col">
+          <p className="text-3xl text-red font-bold mb-5">
+            You have not added food yet!
+          </p>
+          <Link to="/allFoods">
+            <Button>Go To All Food Page</Button>
+          </Link>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {data?.map((food) => (
+            <MyOrderedFood
+              key={food._id}
+              food={food}
+              refetch={refetch}
+            ></MyOrderedFood>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
