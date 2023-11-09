@@ -183,7 +183,7 @@ const Register = () => {
               </p>
 
               {registerError && (
-                <h3 className="text-red-600  text-lg pb-2">{registerError}</h3>
+                <h3 className="text-2xl text-red pb-2">{registerError}</h3>
               )}
               <input
                 type="submit"

@@ -118,7 +118,7 @@ const Login = () => {
               </p>
 
               {loginError && (
-                <h3 className="text-red  text-lg pb-2">{loginError}</h3>
+                <h3 className="text-2xl text-red  pb-2">{loginError}</h3>
               )}
               <input
                 type="submit"
