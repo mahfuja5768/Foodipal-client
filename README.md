@@ -4,6 +4,9 @@
   <h2>Server side code link : https://github.com/mahfuja5768/Foodipal-server</h2>
 </div>
 
+## Technologies:
+This project is made by React, Nodejs, Exressjs, Tailwind, Material Ui. Here for authentication I used firebase, jwt.
+
 ## # The features and functionalities  of my website are giving below :
 
 ### ~ Firstly in the Home page there was a  navbar ,banner , top foods, and a footer section. 
