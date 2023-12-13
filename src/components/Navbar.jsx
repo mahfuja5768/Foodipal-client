@@ -134,6 +134,18 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
+            <NavLink
+              to="/bookings"
+              className={({ isActive }) =>
+                isActive
+                  ? " underline decoration-white decoration-4 underline-offset-8"
+                  : ""
+              }
+            >
+              My Bookings
+            </NavLink>
+          </li>
+            <li>
               <NavLink
                 to="/register"
                 className={({ isActive }) =>
@@ -245,6 +257,18 @@ const Navbar = () => {
               }
             >
               Blogs
+            </NavLink>
+          </li>
+          <li onClick={() => setOpen(!open)}>
+            <NavLink
+              to="/bookings"
+              className={({ isActive }) =>
+                isActive
+                  ? " underline decoration-white decoration-4 underline-offset-8"
+                  : ""
+              }
+            >
+              My Bookings
             </NavLink>
           </li>
           <li onClick={() => setOpen(!open)}>

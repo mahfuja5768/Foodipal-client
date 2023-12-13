@@ -5,7 +5,7 @@ const Title = ({ children }) => {
       <div className="flex flex-col items-center">
         <div className="border-t-4 border-red w-1/2"></div>
         <h2
-          className="text-3xl md:text-6xl font-bold py-4 flex justify-center items-center"
+          className="text-2xl md:text-6xl font-bold py-4 flex justify-center items-center"
           style={{
             backgroundImage: `url(${bg})`,
             backgroundSize: "cover",

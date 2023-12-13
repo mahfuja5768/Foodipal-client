@@ -1,18 +1,20 @@
 import Title from "../hooks/Title";
+import img2 from "../../src/assets/features.avif";
 
 const Features = () => {
-  const bg ='https://i.ibb.co/PDhh91Q/img-19.png'
   return (
     <div
-      className=" my-24  "
+      className=" my-24 py-12 text-white "
       style={{
-        backgroundImage: `url(${bg})`,
-        backgroundSize: "cover",
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url(${img2})`,
         backgroundPosition: "center",
+        backgroundBlendMode: "multiply",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
       }}
     >
       <Title>Features</Title>
-      <div className="hero-content max-w-[1280px] mx-auto -mt-12">
+      <div className="hero-content max-w-[1280px] mx-auto -mt-12 ">
         <div className="grid grid-cols-1 lg:grid-cols-4">
           <div className=" lg:col-span-3 space-y-6 ">
             <h1 className="mb-4 text-2xl md:text-4xl leading-9 font-bold w-full  md:w-10/12  lg:w-full mx-auto">

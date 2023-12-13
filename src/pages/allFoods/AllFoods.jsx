@@ -2,14 +2,13 @@ import Title from "../../hooks/Title";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AllFood from "./AllFood";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Button from "../../hooks/Button";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const AllFoods = () => {
   const { loading } = useAuth();
-
   if (loading) {
     return (
       <div className="text-center my-8">
@@ -19,7 +18,7 @@ const AllFoods = () => {
   }
   const [foods, setFoods] = useState([]);
   const [foodName, setFoodName] = useState();
-  console.log(foodName);
+  // console.log(foodName);
   const foodNames = [
     "All",
     "Lasagna",
@@ -33,6 +32,9 @@ const AllFoods = () => {
   ];
   const [itemsPerPage, setItemsPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(0);
+
+  const [searchFoodName, setSearchFoodName] = useState([]);
+
   const { count } = useLoaderData();
 
   //   console.log(count);
@@ -71,6 +73,19 @@ const AllFoods = () => {
     // url = "https://foodie-pal-server.vercel.app/all-foods";
     url = `https://foodie-pal-server.vercel.app/all-foods?&page=${currentPage}&size=${itemsPerPage}`;
   }
+
+  const handleSearch = () => {
+    console.log("ggggggg--->", searchFoodName);
+    axios
+      .get(
+        `https://foodie-pal-server.vercel.app/search-foods/${searchFoodName}`
+      )
+      .then((res) => {
+        const selectedFood = res.data;
+        setFoods(selectedFood);
+      });
+  };
+
   useEffect(() => {
     axios.get(url).then((res) => {
       //   console.log(res.data);
@@ -84,9 +99,27 @@ const AllFoods = () => {
         <Title>All Foods</Title>
       </div>
       <div>
-        <div className="flex  lg:flex-row flex-col gap-5 items-center justify-center my-12">
+        <div className="flex  lg:flex-row flex-col gap-6 items-center justify-between my-12">
           <div className="form-control ">
-            <h2 className="text-red text-3xl mb-4 font-bold">Search your food by name:</h2>
+            <h2 className="text-red text-3xl mb-4 font-bold">
+              Search your food by name:
+            </h2>
+            <div className="input-group">
+              <input
+                onChange={(e) => setSearchFoodName(e.target.value)}
+                type="text"
+                placeholder="Type here"
+                className="px-3 me-2 rounded-2xl border-2 border-red text-black"
+              />
+              <Link onClick={handleSearch}>
+                <Button>Go</Button>
+              </Link>
+            </div>
+          </div>
+          <div className="form-control">
+            <h2 className="text-red text-3xl mb-4 font-bold">
+              Filter food by name:
+            </h2>
             <div className="input-group">
               <select
                 onChange={(e) => setFoodName(e.target.value)}
@@ -135,7 +168,8 @@ const AllFoods = () => {
           <FaAngleRight></FaAngleRight>
         </button>
 
-        <select className="border-2 border-red p-2 font-bold text-black"
+        <select
+          className="border-2 border-red p-2 font-bold text-black"
           value={itemsPerPage}
           onChange={handleItemsPerPage}
           name=""

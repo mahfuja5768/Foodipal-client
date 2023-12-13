@@ -63,7 +63,7 @@ const OrderFood = () => {
             icon: "success",
             confirmButtonText: "Done",
           });
-          goTo("/allFoods");
+          goTo("/myOrderedFood");
           formValues.reset();
         })
         .catch((err) => console.log(err.message));

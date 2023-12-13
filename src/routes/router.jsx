@@ -13,6 +13,7 @@ import AddFoodItem from "./../pages/myProfile/addFoodItem/AddFoodItem";
 import MyOrderedFoods from "./../pages/myProfile/myOrderedFoods/MyOrderedFoods";
 import OrderFood from './../pages/orderFoods/OrderFood';
 import UpdateFood from "../pages/myProfile/updateFood/UpdateFood";
+import Bookings from "../pages/Bookings/Bookings";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyOrderedFoods></MyOrderedFoods>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/bookings",
+        element: (
+          <PrivateRoute>
+            <Bookings></Bookings>
           </PrivateRoute>
         ),
       },
