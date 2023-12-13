@@ -5,7 +5,7 @@
 </div>
 
 ## Technologies:
-This project is made by React, Nodejs, Exressjs, Tailwind, Here for authentication I used firebase, jwt.
+This project is made by React, Nodejs, Expressjs, Tailwind, Here for authentication I used firebase, jwt.
 
 ## # The features and functionalities  of my website are giving below :
 
