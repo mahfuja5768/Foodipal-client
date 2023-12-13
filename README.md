@@ -1,7 +1,11 @@
 <div align="center">
-  <h1>Website Name : Foodie Pal</h1>
+  <h1>Website Name : Foodie Pal</h1> 
   <h2>Live link : https://foodie-pal-client.vercel.app/</h2>
+  <h2>Server side code link : https://github.com/mahfuja5768/Foodipal-server</h2>
 </div>
+
+## Technologies:
+This project is made by React, Nodejs, Exressjs, Tailwind, Here for authentication I used firebase, jwt.
 
 ## # The features and functionalities  of my website are giving below :
 
