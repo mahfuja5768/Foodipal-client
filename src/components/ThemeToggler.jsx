@@ -27,7 +27,7 @@ const ThemeToggler = () => {
       <input
         type="checkbox"
         onClick={handleToggleTheme}
-        className="toggle toggle-error"
+        className="toggle toggle-red"
       />
       <span>
         {showIcon ? (

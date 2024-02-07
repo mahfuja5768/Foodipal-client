@@ -23,7 +23,7 @@ const Bookings = () => {
         <table className="table text-lg">
           {/* head */}
           <thead>
-            <tr className="text-lg border-y-4 border-red">
+            <tr className="text-lg border-y-4 text-red border-red">
               <th></th>
               <th>Name</th>
               <th>Email</th>

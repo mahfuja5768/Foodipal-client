@@ -42,7 +42,7 @@ const AllReviews = () => {
         <div className="w-1/2 text-center mx-auto">
           {reviews?.map((item) => (
             <SwiperSlide className="text-center mx-auto" key={item._id}>
-              <div className="border-2 border-secondary p-12 rounded-2xl">
+              <div className="border-2 border-red p-12 rounded-2xl">
                 <p className="md:text-2xl text-xl font-fold">
                   Review: {item.review}
                 </p>
