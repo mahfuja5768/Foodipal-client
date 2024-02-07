@@ -5,14 +5,15 @@ import { motion } from "framer-motion";
 const Banner = () => {
   const bg = `https://i.ibb.co/WB946R8/bg3.jpg`;
   return (
-    <div
+    <div className=" h-screen"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
+   
       }}
     >
-      <div className="bg-gradient-to-t from-black to-transparent px-4">
+      <div className="bg-gradient-to-t from-black to-transparent px-4 h-screen" >
         <div className="md:px-5 px-2 lg:col-span-3 max-w-[1280px] mx-auto text-white md:py-[220px] py-[90px]">
           <motion.h1
             initial={{ x: -1000 }}
